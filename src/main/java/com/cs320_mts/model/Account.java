@@ -11,6 +11,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int AccountId;
+    
     @Column(length = 25, nullable = false)
     private double balance;
 
