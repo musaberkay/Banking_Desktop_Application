@@ -10,7 +10,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int AccountId;
+    private int accountId;
     @Column(length = 25, nullable = false)
     private double balance;
 
@@ -21,13 +21,23 @@ public class Account {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "ACCOUNT_ID")
     private List<Transaction> transactions = new ArrayList<>();
+    public Account(){
+
+    }
+    public Account(double balance,User user)
+    {
+        this.balance = balance;
+        this.user = user;
+    }
+
+
 
     public int getAccountId() {
-        return AccountId;
+        return accountId;
     }
 
     public void setAccountId(int accountId) {
-        AccountId = accountId;
+        accountId = accountId;
     }
 
     public double getBalance() {
