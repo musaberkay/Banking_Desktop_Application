@@ -19,7 +19,7 @@ public class Account {
     private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "TRANSACTION_ID")
+    @JoinColumn(name = "ACCOUNT_ID")
     private List<Transaction> transactions = new ArrayList<>();
 
     public int getAccountId() {
