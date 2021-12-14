@@ -18,8 +18,8 @@ public class User {
     private String surname;
     @Column(length = 6, nullable = false)
     private int password;
-    @Temporal(TemporalType.DATE)
-    private Date dateofBirth;
+    @Column(length = 10, nullable = false)
+    private String dateofBirth;
     @Column(length = 11, nullable = false)
     private String identificationNumber;
     @Column(length = 40, nullable = false)
@@ -29,6 +29,20 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Account> accounts = new ArrayList<>();
+
+    public User(){};
+
+    public User(String name, String surname, int password, String dateofBirth,
+                String identificationNumber, String email, String phoneNumber
+    ) {
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.dateofBirth = dateofBirth;
+        this.identificationNumber = identificationNumber;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
     public int getUserId() {
         return userId;
@@ -62,11 +76,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getDateofBirth() {
+    public String getDateofBirth() {
         return dateofBirth;
     }
 
-    public void setDateofBirth(Date dateofBirth) {
+    public void setDateofBirth(String dateofBirth) {
         this.dateofBirth = dateofBirth;
     }
 
