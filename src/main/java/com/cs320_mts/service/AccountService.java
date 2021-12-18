@@ -9,4 +9,5 @@ public interface AccountService {
     public List<Account> getAll();
     public Account getById(int id);
     public void deleteById(int id);
+    public boolean moneyTransfer(double amount,int receiverId);
 }

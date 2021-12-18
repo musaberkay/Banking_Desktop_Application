@@ -34,4 +34,34 @@ public class AccountServiceImpl implements AccountService
     public void deleteById(int id) {
         accountRepository.deleteById(id);
     }
+
+    @Override
+    public boolean moneyTransfer(double amount, int receiverId) {
+        List<Integer> accountIdList = accountRepository.getAccountIdList();
+
+
+        if(amount <= 0)
+        {
+            System.out.println("Please enter valid amount");
+            return false;
+        }else if(!isContain(receiverId,accountIdList))
+        {
+            System.out.println("Please enter valid recipient id");
+            return false;
+        }
+
+        //TODO Add the transaction logic here.
+
+        return true;
+    }
+
+    private boolean isContain(int id,List<Integer> accountIdList)
+    {
+        for (int someAccountId: accountIdList)
+        {
+            if(someAccountId == id)
+                return true;
+        }
+        return false;
+    }
 }
