@@ -3,20 +3,27 @@ package com.cs320_mts.service;
 import com.cs320_mts.model.Account;
 import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
+import com.cs320_mts.repository.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.cs320_mts.service.UserService;
 
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 public class TestUserService
 {
     @Autowired
     UserService userService;
+    @Autowired
+    AccountService accountService;
+    @Autowired
+    AccountRepository accountRepository;
 
     /**
+     * The default DB mode is "create"
      * This test creates 2 user and 2 account for each user.
      * This method should be run in order to initialize the DB and work with it for testing purposes.
      */
@@ -37,6 +44,7 @@ public class TestUserService
         user.getAccounts().add(account2);
         account.setUser(user);
 
+        // saves first User information to the DB
         userService.save(user);
 
         // Creation of second User
@@ -52,7 +60,35 @@ public class TestUserService
         user2.getAccounts().add(account4);
         account4.setUser(user2);
 
+        // saves second User information to the DB
         userService.save(user2);
+
+
+    }
+    /**
+     * DB mode is "update"
+     * This test creates a transaction object. And tries to do money transfer.
+     * This method should be run as a second test. Because we need initial rows on DB.
+     */
+    @Test
+    public void testCreateTransaction()
+    {
+        // creates transaction object.
+        Transaction transaction = new Transaction(100,6);
+
+        // retrieves the sender account. In this test, it is 1.
+        Account account = accountService.getById(1);
+        if(accountService.moneyTransfer(100,6))
+        {
+            System.out.println("Money Transfer has been made successfully");
+        }else{
+            System.out.println("Money Transfer is failed.");
+        }
+
+        account.getTransactions().add(transaction);
+        accountService.save(account);
+
+
 
 
     }
