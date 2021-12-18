@@ -5,10 +5,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface AccountRepository extends JpaRepository<Account,Integer>
 {
-//    @Query("select a from Account a where a.accountId=?1")
-//    public Account checkAccountBalanceById(int id);
+
+    public static final String FIND_ACCOUNT_IDS = "SELECT a.accountId FROM Account AS a";
+
+    @Query(value = FIND_ACCOUNT_IDS)
+    public List<Integer> getAccountIdList();
+
 
 }
