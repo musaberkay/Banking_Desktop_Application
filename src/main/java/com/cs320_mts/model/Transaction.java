@@ -10,17 +10,19 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int transactionId;
-    @Temporal(TemporalType.DATE)
-    private Date date;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date = new Date(System.currentTimeMillis());
+
     @Column(length = 10, nullable = false)
     private double amount;
+
     @Column(length = 11, nullable = false)
     private int receiverAccId;
 
     public Transaction(){}
 
-    public Transaction(Date date, double amount, int receiverAccountId) {
-        this.date = date;
+    public Transaction(double amount, int receiverAccountId) {
         this.amount = amount;
         this.receiverAccId = receiverAccountId;
     }
