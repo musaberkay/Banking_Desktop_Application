@@ -1,6 +1,7 @@
 package com.cs320_mts.service;
 
 import com.cs320_mts.model.Account;
+import com.cs320_mts.model.Transaction;
 import com.cs320_mts.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,25 +39,30 @@ public class AccountServiceImpl implements AccountService
 
     @Override
     @Transactional
-    public boolean moneyTransfer(int senderId,double amount, int recipientId) {
+    public boolean moneyTransfer(int senderId, Transaction transaction) {
         List<Integer> accountIdList = accountRepository.getAccountIdList();
 
-        if(amount <= 0)
+        if(transaction.getAmount() <= 0)
         {
             System.out.println("Please enter valid amount");
             return false;
-        }else if(!isContain(recipientId,accountIdList))
+        }else if(!isContain(transaction.getRecipientAccId(),accountIdList))
         {
             System.out.println("Please enter valid recipient id");
             return false;
         }
 
         Account senderAccount = accountRepository.findById(senderId).get();
-        if(senderAccount.getBalance() - amount >= 0)
+        if(senderAccount.getBalance() - transaction.getAmount() >= 0)
         {
-            Account recipientAccount = accountRepository.findById(recipientId).get();
-            recipientAccount.setBalance(recipientAccount.getBalance() + amount);
+            Account recipientAccount = accountRepository.findById(transaction.getRecipientAccId()).get();
+            recipientAccount.setBalance(recipientAccount.getBalance() + transaction.getAmount());
             accountRepository.save(recipientAccount);
+
+            senderAccount.setBalance(senderAccount.getBalance() - transaction.getAmount());
+            senderAccount.getTransactions().add(transaction);
+            accountRepository.save(senderAccount);
+
         }else
         {
             System.out.println("Not enough account balance");

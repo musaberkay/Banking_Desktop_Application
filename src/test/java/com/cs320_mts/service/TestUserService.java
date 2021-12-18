@@ -80,16 +80,14 @@ public class TestUserService
     public void testCreateTransaction()
     {
         // creates transaction object.
-        Transaction transaction = new Transaction(30,144);
+        Transaction transaction = new Transaction(30,151);
 
         // retrieves the sender account. In this test, it is X.
-        Account senderAccount = accountService.getById(145);
-        if(accountService.moneyTransfer(senderAccount.getAccountId(),transaction.getAmount(),transaction.getRecipientAccId()))
+        Account senderAccount = accountService.getById(152);
+        if(accountService.moneyTransfer(senderAccount.getAccountId(),transaction))
         {
             System.out.println("Money Transfer has been made successfully");
-            senderAccount.setBalance(senderAccount.getBalance() - transaction.getAmount());
-            senderAccount.getTransactions().add(transaction);
-            accountService.save(senderAccount);
+
         }else{
             System.out.println("Money Transfer is failed.");
         }
