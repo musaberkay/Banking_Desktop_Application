@@ -11,6 +11,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int accountId;
+
     @Column(length = 25, nullable = false)
     private double balance;
 
@@ -21,16 +22,14 @@ public class Account {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "SENDER_ACC_ID")
     private List<Transaction> transactions = new ArrayList<>();
-    public Account(){
 
-    }
+    public Account(){}
+
     public Account(double balance,User user)
     {
         this.balance = balance;
         this.user = user;
     }
-
-
 
     public int getAccountId() {
         return accountId;

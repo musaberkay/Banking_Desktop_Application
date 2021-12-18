@@ -12,18 +12,25 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userId;
+
     @Column(length = 100, nullable = false)
     private String name;
+
     @Column(length = 100, nullable = false)
     private String surname;
+
     @Column(length = 6, nullable = false)
     private int password;
+
     @Column(length = 10, nullable = false)
-    private String dateofBirth;
+    private String dateOfBirth;
+
     @Column(length = 11, nullable = false)
     private String identificationNumber;
+
     @Column(length = 40, nullable = false)
     private String email;
+
     @Column(length = 11, nullable = false)
     private String phoneNumber;
 
@@ -38,7 +45,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.password = password;
-        this.dateofBirth = dateofBirth;
+        this.dateOfBirth = dateofBirth;
         this.identificationNumber = identificationNumber;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -77,11 +84,11 @@ public class User {
     }
 
     public String getDateofBirth() {
-        return dateofBirth;
+        return dateOfBirth;
     }
 
     public void setDateofBirth(String dateofBirth) {
-        this.dateofBirth = dateofBirth;
+        this.dateOfBirth = dateofBirth;
     }
 
     public String getIdentificationNumber() {
