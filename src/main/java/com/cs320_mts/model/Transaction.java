@@ -15,17 +15,14 @@ public class Transaction {
     @Column(length = 10, nullable = false)
     private double amount;
     @Column(length = 11, nullable = false)
-    private int senderAccountId;
-    @Column(length = 11, nullable = false)
-    private int receiverAccountId;
+    private int receiverAccId;
 
     public Transaction(){}
 
-    public Transaction(Date date, double amount, int senderAccountId, int receiverAccountId) {
+    public Transaction(Date date, double amount, int receiverAccountId) {
         this.date = date;
         this.amount = amount;
-        this.senderAccountId = senderAccountId;
-        this.receiverAccountId = receiverAccountId;
+        this.receiverAccId = receiverAccountId;
     }
 
     public int getTransactionId() {
@@ -52,19 +49,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getSenderAccountId() {
-        return senderAccountId;
+    public int getReceiverAccId() {
+        return receiverAccId;
     }
 
-    public void setSenderAccountId(int senderAccountId) {
-        this.senderAccountId = senderAccountId;
-    }
-
-    public int getReceiverAccountId() {
-        return receiverAccountId;
-    }
-
-    public void setReceiverAccountId(int receiverAccountId) {
-        this.receiverAccountId = receiverAccountId;
+    public void setReceiverAccId(int receiverAccountId) {
+        this.receiverAccId = receiverAccountId;
     }
 }
