@@ -4,11 +4,13 @@ import com.cs320_mts.model.Account;
 import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
 import com.cs320_mts.repository.AccountRepository;
+import com.cs320_mts.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.cs320_mts.service.UserService;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +21,6 @@ public class TestUserService
     UserService userService;
     @Autowired
     AccountService accountService;
-    @Autowired
-    AccountRepository accountRepository;
 
     /**
      * The default DB mode is "create"
@@ -65,6 +65,12 @@ public class TestUserService
 
 
     }
+    @Test
+    public void deleteAllRows()
+    {
+        userService.deleteAll();
+    }
+
     /**
      * DB mode is "update"
      * This test creates a transaction object. And tries to do money transfer.
@@ -74,20 +80,19 @@ public class TestUserService
     public void testCreateTransaction()
     {
         // creates transaction object.
-        Transaction transaction = new Transaction(100,6);
+        Transaction transaction = new Transaction(30,144);
 
-        // retrieves the sender account. In this test, it is 1.
-        Account account = accountService.getById(1);
-        if(accountService.moneyTransfer(100,6))
+        // retrieves the sender account. In this test, it is X.
+        Account senderAccount = accountService.getById(145);
+        if(accountService.moneyTransfer(senderAccount.getAccountId(),transaction.getAmount(),transaction.getRecipientAccId()))
         {
             System.out.println("Money Transfer has been made successfully");
+            senderAccount.setBalance(senderAccount.getBalance() - transaction.getAmount());
+            senderAccount.getTransactions().add(transaction);
+            accountService.save(senderAccount);
         }else{
             System.out.println("Money Transfer is failed.");
         }
-
-        account.getTransactions().add(transaction);
-        accountService.save(account);
-
 
 
 

@@ -18,13 +18,13 @@ public class Transaction {
     private double amount;
 
     @Column(length = 11, nullable = false)
-    private int receiverAccId;
+    private int recipientAccountId;
 
     public Transaction(){}
 
-    public Transaction(double amount, int receiverAccountId) {
+    public Transaction(double amount, int recipientAccountId) {
         this.amount = amount;
-        this.receiverAccId = receiverAccountId;
+        this.recipientAccountId = recipientAccountId;
     }
 
     public int getTransactionId() {
@@ -51,11 +51,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public int getReceiverAccId() {
-        return receiverAccId;
+    public int getRecipientAccId() {
+        return recipientAccountId;
     }
 
     public void setReceiverAccId(int receiverAccountId) {
-        this.receiverAccId = receiverAccountId;
+        this.recipientAccountId = receiverAccountId;
     }
 }

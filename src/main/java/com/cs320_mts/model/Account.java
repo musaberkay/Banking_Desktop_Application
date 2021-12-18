@@ -19,7 +19,7 @@ public class Account {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "SENDER_ACC_ID")
     private List<Transaction> transactions = new ArrayList<>();
 
