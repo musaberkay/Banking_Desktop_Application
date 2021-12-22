@@ -73,6 +73,7 @@ public class Application extends JFrame {
         mainMenu.setTransferOthersAccount(transferOthers);
         mainMenu.setViewTransactionHist(viewTransaction);
         mainMenu.setChangePassword(changePassword);
+        mainMenu.setExit();
         this.setVisible(true);
 
 
