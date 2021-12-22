@@ -14,10 +14,17 @@ public class Welcome extends JPanel {
 
         // LAYOUT
 
-
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.CENTER;
+        c.weightx = 0.05;
+        c.ipady = 100;
+        c.ipadx = 100;
+        login.setFont(new Font("Arial",Font.BOLD,20));
+        register.setFont(new Font("Arial",Font.BOLD,16));
         this.setSize(size);
-        this.add(login);
-        this.add(register);
+        this.add(login,c);
+        this.add(register,c);
 
 
     }
