@@ -26,13 +26,41 @@ public class TransferOwnAccount extends JPanel {
         confirm         = new JButton("Confirm");
         back            = new JButton("Back");
 
+        //LAYOUT
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c1 = new GridBagConstraints();
+        GridBagConstraints c2 = new GridBagConstraints();
+        GridBagConstraints c3 = new GridBagConstraints();
+        GridBagConstraints c4 = new GridBagConstraints();
+        GridBagConstraints c5 = new GridBagConstraints();
+        GridBagConstraints c6 = new GridBagConstraints();
+
+        c1.gridy = 0;
+        c2.gridy = 1;
+        c3.gridy = 2;
+        c4.gridy = 3;
+        c5.gridy = 4;
+        c6.gridy = 5;
+
+        c4.ipady = 20;
+        c4.ipadx = 180;
+
+        amount.setFont(new Font("Arial",Font.BOLD,20));
+        amountText.setFont(new Font("Arial",Font.BOLD,20));
+        accounts.setFont(new Font("Arial", Font.BOLD ,20));
+        accountsList.setFont(new Font("Arial", Font.BOLD ,20));
+        confirm.setFont(new Font("Arial",Font.BOLD,20));
+        back.setFont(new Font("Arial",Font.BOLD,20));
+
+
         this.setSize(size);
-        this.add(accounts);
-        this.add(amount);
-        this.add(accountsList);
-        this.add(amountText);
-        this.add(confirm);
-        this.add(back);
+        this.add(accounts,c1);
+        this.add(accountsList,c2);
+        this.add(amount,c3);
+        this.add(amountText,c4);
+        amountText.setHorizontalAlignment(JTextField.CENTER);
+        this.add(confirm,c5);
+        this.add(back,c6);
     }
     // ************ DATA HAS RECEIVED. DATABASE ACTION NECESSARY ************
     public void setConfirmButton(MainMenu mainMenu){
