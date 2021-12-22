@@ -25,14 +25,42 @@ public class ChangePassword  extends JPanel {
         back			= new JButton("Back");
 
         //LAYOUT
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c1 = new GridBagConstraints();
+        GridBagConstraints c2 = new GridBagConstraints();
+        GridBagConstraints c3 = new GridBagConstraints();
+        GridBagConstraints c4 = new GridBagConstraints();
+        GridBagConstraints c5 = new GridBagConstraints();
+        GridBagConstraints c6 = new GridBagConstraints();
+
+        c1.gridy = 0;
+        c2.gridy = 1;
+        c3.gridy = 2;
+        c4.gridy = 3;
+        c5.gridy = 4;
+        c6.gridy = 5;
+
+        c2.ipady = 20;
+        c2.ipadx = 180;
+        c4.ipady = 20;
+        c4.ipadx = 180;
+
+        oldPassword.setFont(new Font("Arial",Font.BOLD,20));
+        oldPasswordField.setFont(new Font("Arial",Font.BOLD,20));
+        newPassword.setFont(new Font("Arial",Font.BOLD,20));
+        newPasswordField.setFont(new Font("Arial",Font.BOLD,20));
+        confirm.setFont(new Font("Arial", Font.BOLD ,20));
+        back.setFont(new Font("Arial", Font.BOLD ,20));
 
         this.setSize(size);
-        this.add(oldPassword);
-        this.add(newPassword);
-        this.add(oldPasswordField);
-        this.add(newPasswordField);
-        this.add(confirm);
-        this.add(back);
+        this.add(oldPassword,c1);
+        this.add(oldPasswordField,c2);
+        oldPasswordField.setHorizontalAlignment(JTextField.CENTER);
+        this.add(newPassword,c3);
+        this.add(newPasswordField,c4);
+        newPasswordField.setHorizontalAlignment(JTextField.CENTER);
+        this.add(confirm,c5);
+        this.add(back,c6);
 
     }
     //DATABASE ACTION: PASSWORD NEEDS TO BE CHANGED !!!
