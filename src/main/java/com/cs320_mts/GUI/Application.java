@@ -68,6 +68,7 @@ public class Application extends JFrame {
         viewTransaction.setBackButton(mainMenu);
         transferOwn.setConfirmButton(mainMenu);
         transferOwn.setBackButton(mainMenu);
+        mainMenu.setCreateAccount();
         mainMenu.setCheckBalance(checkBalance);
         mainMenu.setTransferOwnAccount(transferOwn);
         mainMenu.setTransferOthersAccount(transferOthers);

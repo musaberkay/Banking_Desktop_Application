@@ -27,6 +27,8 @@ public class MainMenu extends JPanel {
         exit					= new JButton("Create Account");
 
         //LAYOUT
+        this.setSize(size);
+        this.setLayout(new GridLayout(7, 1));
 
         this.add(createAccount);
         this.add(checkBalance);
