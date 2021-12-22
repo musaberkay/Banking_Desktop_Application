@@ -16,7 +16,7 @@ public class Login extends JPanel {
     public Login(Dimension size){
         currentPanel = this;
 
-        identificationNumber 		= new JLabel("identificationNumber");
+        identificationNumber 		= new JLabel("IdentificationNumber");
         password 					= new JLabel("Password");
         identificationNumberText 	= new JTextField();
         passwordText 				= new JPasswordField();

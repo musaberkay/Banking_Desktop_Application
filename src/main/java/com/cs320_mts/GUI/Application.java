@@ -55,6 +55,8 @@ public class Application extends JFrame {
         // set transitions
         welcome.setLoginButton(login);
         welcome.setRegisterButton(register);
+        register.setRegisterButton(mainMenu);
+        register.setBackButton(welcome);
         login.setLoginButton(mainMenu);
         login.setBackButton(welcome);
         transferOthers.setConfirmButton(mainMenu);
@@ -62,6 +64,9 @@ public class Application extends JFrame {
         checkBalance.setBackButton(mainMenu);
         changePassword.setConfirmButton(mainMenu);
         changePassword.setBackButton(mainMenu);
+        viewTransaction.setBackButton(mainMenu);
+        transferOwn.setConfirmButton(mainMenu);
+        transferOwn.setBackButton(mainMenu);
         mainMenu.setCheckBalance(checkBalance);
         mainMenu.setTransferOwnAccount(transferOwn);
         mainMenu.setTransferOthersAccount(transferOthers);
