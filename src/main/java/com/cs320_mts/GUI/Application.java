@@ -55,6 +55,20 @@ public class Application extends JFrame {
         // set transitions
         welcome.setLoginButton(login);
         welcome.setRegisterButton(register);
+        login.setLoginButton(mainMenu);
+        login.setBackButton(welcome);
+        transferOthers.setConfirmButton(mainMenu);
+        transferOthers.setBackButton(mainMenu);
+        checkBalance.setBackButton(mainMenu);
+        changePassword.setConfirmButton(mainMenu);
+        changePassword.setBackButton(mainMenu);
+        mainMenu.setCheckBalance(checkBalance);
+        mainMenu.setTransferOwnAccount(transferOwn);
+        mainMenu.setTransferOthersAccount(transferOthers);
+        mainMenu.setViewTransactionHist(viewTransaction);
+        mainMenu.setChangePassword(changePassword);
         this.setVisible(true);
+
+
     }
 }
