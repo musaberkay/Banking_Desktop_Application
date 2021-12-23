@@ -1,10 +1,14 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class Register extends JPanel {
     private User user;
     private final JLabel name;
@@ -24,7 +28,11 @@ public class Register extends JPanel {
     private final JButton register;
     private final JButton back;
     private final Register currentPanel;
-    public Register(Dimension size){
+
+    @Autowired
+    UserService userService;
+
+    public Register(){
         currentPanel    = this;
         name            = new JLabel("Name");
         surname         = new JLabel("Surname");
@@ -36,7 +44,7 @@ public class Register extends JPanel {
         nameText        = new JTextField();
         surnameText     = new JTextField();
         passwordText    = new JPasswordField();
-        dateOfBirthText = new JTextField("2021-12-30");
+        dateOfBirthText = new JTextField("30-12-2021");
         identificationNumberText = new JTextField();
         emailText       = new JTextField();
         phoneNumberText = new JTextField();
@@ -113,7 +121,6 @@ public class Register extends JPanel {
         register.setFont(new Font("Arial",Font.ITALIC,20));
         back.setFont(new Font("Arial",Font.ITALIC,20));
 
-        this.setSize(size);
         this.add(name,c1);
         this.add(nameText,c2);
         nameText.setHorizontalAlignment(JTextField.CENTER);
@@ -152,7 +159,7 @@ public class Register extends JPanel {
             String userSurname      = surnameText.getText();
             String userPassword_    = String.valueOf(passwordText.getPassword());
             int userPassword        = Integer.parseInt(userPassword_);  // Use this
-            String userDateOfBirth  = dateOfBirthText.getText(); //  like 2000-10-04
+            String userDateOfBirth  = dateOfBirthText.getText(); //  like 21-07-2000
 
 
                 if (userName.length() > 100 || userName.length() < 3)
@@ -170,27 +177,27 @@ public class Register extends JPanel {
                         throw new Exception("Surname only includes letters");
                 }
                 if(userDateOfBirth.length() != 10) {
-                    throw new Exception("It is not valid date of birth should be in form 2021-12-30");
+                    throw new Exception("It is not valid date of birth should be in form 30-12-2021");
                 }
-                if(userDateOfBirth.charAt(4) != '-' || userDateOfBirth.charAt(7) != '-'){
-                    throw new Exception("It is not valid date of birth should be in form 2021-12-30");
+                if(userDateOfBirth.charAt(2) != '-' || userDateOfBirth.charAt(5) != '-'){
+                    throw new Exception("It is not valid date of birth should be in form 30-12-2021");
                 }
-                for(int i = 0 ; i < 4 ; i++ ){
-                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
-                        throw new Exception("Year is not in valid form");
-                }
-                for(int i = 5 ; i < 7 ; i++){
-                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
-                        throw new Exception("Month is not in valid form");
-                }
-                for(int i = 8 ; i < 10 ; i++){
+                for(int i = 0 ; i < 2 ; i++ ){
                     if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
                         throw new Exception("Day is not in valid form");
                 }
+                for(int i = 3 ; i < 5 ; i++){
+                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
+                        throw new Exception("Month is not in valid form");
+                }
+                for(int i = 6 ; i < 10 ; i++){
+                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
+                        throw new Exception("Year is not in valid form");
+                }
 
-            int year    = Integer.parseInt(userDateOfBirth.substring(0,4));
-            int month   = Integer.parseInt(userDateOfBirth.substring(5,7));
-            int day     = Integer.parseInt(userDateOfBirth.substring(8,10));
+            int day   = Integer.parseInt(userDateOfBirth.substring(0,2));
+            int month   = Integer.parseInt(userDateOfBirth.substring(3,5));
+            int year    = Integer.parseInt(userDateOfBirth.substring(6,10));
 
                 if(year > 2005 || year < 1900)
                     throw new Exception("Not valid year");
@@ -221,9 +228,16 @@ public class Register extends JPanel {
                         throw new Exception("Phone number only includes digits");
             }
 
-
             // DATABASE ACTION HERE
-            // Create new User Object named "user"
+                if(userService.getByIdentificationNumber(userIdentificationNumber)==null){
+                    user = new User(userName, userSurname, userPassword, userDateOfBirth, userIdentificationNumber,
+                            userEmail, userPhoneNumber);
+                    userService.save(user);
+                }
+                else{
+                    throw new Exception("This user already registered.");
+                }
+            //User inserted to DB
 
             // ************ DON'T TOUCH ************
             mainMenu.setUser(user);
