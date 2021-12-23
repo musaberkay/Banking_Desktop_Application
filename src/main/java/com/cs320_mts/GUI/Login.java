@@ -70,7 +70,7 @@ public class Login extends JPanel {
     }
 
     //// ** DATA HAS RECEIVED. DATABASE ACTION NECESSARY **
-    public void setLoginButton(MainMenu loginPanel){
+    public void setLoginButton(MainMenu mainMenu){
         login.addActionListener(e -> {
             String identificationNumberInput = identificationNumberText.getText();
 
@@ -79,8 +79,8 @@ public class Login extends JPanel {
 
             // user = GET User information FROM DATABASE !!!
             // User user = new User() set attributes from Database
-            loginPanel.setUser(user);
-            loginPanel.setVisible(true);
+            mainMenu.setUser(user);
+            mainMenu.setVisible(true);
             currentPanel.setVisible(false);
         });
     }
