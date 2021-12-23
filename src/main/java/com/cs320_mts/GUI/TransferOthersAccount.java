@@ -1,10 +1,13 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.Account;
+import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
 
 import javax.swing.*;
 import java.awt.*;
+
+import static java.lang.Integer.parseInt;
 
 public class TransferOthersAccount extends JPanel {
     private User user;
@@ -106,6 +109,13 @@ public class TransferOthersAccount extends JPanel {
     //MONEY TRANSFER NEEDS TO BE DONE !!!
     public void setConfirmButton(MainMenu backPanel){
         confirm.addActionListener(e -> {
+            int selectedSenderAccountId = parseInt(accountsList.getSelectedValue().toString());
+            int amountToSend = parseInt(amountText.getText());
+            int receiverAccountId = parseInt(accountIDText.getText());
+
+            //DATABASE ACTION
+            //Transaction transaction = new Transaction(amountToSend,receiverAccountId);
+            // accountService.moneyTransfer(selectedSenderAccountId,transaction); //AccountService accountService; must be initialized
 
             backPanel.setVisible(true);
             currentPanel.setVisible(false);
