@@ -1,14 +1,25 @@
 package com.cs320_mts.GUI;
 
 import ch.qos.logback.core.joran.spi.ActionException;
+
+import com.cs320_mts.model.Account;
+import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.AccountService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 @Component
 public class TransferOwnAccount extends JPanel {
+	
+	@Autowired
+	AccountService accountService;
+	
     private User user;
     private final JLabel accountSender;
     private final JLabel accountReceiver;
@@ -31,12 +42,18 @@ public class TransferOwnAccount extends JPanel {
 
 
         // ************ MODEL ACTION NECESSARY ************
-
-        listModel.addElement("3123125555555"); // Example adding to list
-        listModel.addElement("32322");
-        listModel.addElement("323232");
+        
+//        listModel.addElement("3123125555555"); // Example adding to list
+//        listModel.addElement("32322");
+//        listModel.addElement("323232");
+        
+        List<Account> accounts = accountService.findByUserId(user.getUserId());
+        for(Account account : accounts) {
+        	listModel.addElement(account.getAccountId());
+        }
         accountsList1   = new JList(listModel);
         accountsList2   = new JList(listModel);
+        
         // ADD ACCOUNTS WITH USING USER OBJECT
         // MODEL ACTION HERE
         // **********************************************************************
@@ -115,6 +132,11 @@ public class TransferOwnAccount extends JPanel {
                 // Check necessary constraint using User class object (user: User)
                 // Update Both database and User object if it is valid transfer
 
+                Transaction transaction = new Transaction();
+                transaction.setReceiverAccId(selectedReceiverAccountId);
+                transaction.setAmount(amount);
+                accountService.moneyTransfer(selectedSenderAccountId, transaction);  // validation of transfer is checked under moneyTransfer method
+
 
                 // ************ DON'T TOUCH ************
                 mainMenu.setUser(user);
@@ -139,7 +161,7 @@ public class TransferOwnAccount extends JPanel {
         });
     }
     public void setUser(User user){
-        user = user;
+        this.user = user;
     }
 
 }
