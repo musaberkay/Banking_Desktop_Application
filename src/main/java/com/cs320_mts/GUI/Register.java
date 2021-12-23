@@ -229,14 +229,17 @@ public class Register extends JPanel {
             }
 
             // DATABASE ACTION HERE
-                if(userService.getByIdentificationNumber(userIdentificationNumber)==null){
-                    user = new User(userName, userSurname, userPassword, userDateOfBirth, userIdentificationNumber,
+             if(userService.getIdentificationNumberList().contains(userIdentificationNumber)) {
+            	throw new Exception("This user has already registered.");
+            } else if(userService.getPhoneNumberList().contains(userPhoneNumber)) {
+            	throw new Exception("This phone number has already been used.");
+            } else if(userService.getEmailList().contains(userEmail)) {
+            	throw new Exception("This email has already been used.");
+            } else {
+                user = new User(userName, userSurname, userPassword, userDateOfBirth, userIdentificationNumber,
                             userEmail, userPhoneNumber);
-                    userService.save(user);
-                }
-                else{
-                    throw new Exception("This user already registered.");
-                }
+                userService.save(user);
+            }
             //User inserted to DB
 
             // ************ DON'T TOUCH ************
