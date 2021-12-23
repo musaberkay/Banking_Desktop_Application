@@ -143,7 +143,8 @@ public class Register extends JPanel {
         register.addActionListener(e -> {
             String userName         = nameText.getText();
             String userSurname      = surnameText.getText();
-            int userPassword        = Integer.parseInt(passwordText.getPassword().toString());
+            String userPassword_    = new String(passwordText.getPassword());
+            int userPassword        = Integer.parseInt(userPassword_);  // Use this
             String userDateOfBirth  = dateOfBirthText.getText(); //  like 2000-10-04
             int year    = Integer.parseInt(userDateOfBirth.substring(0,4));
             int month   = Integer.parseInt(userDateOfBirth.substring(5,7));
