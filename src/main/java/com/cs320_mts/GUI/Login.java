@@ -79,7 +79,7 @@ public class Login extends JPanel {
 
             // user = GET User information FROM DATABASE !!!
             // User user = new User() set attributes from Database
-            loginPanel.setUserId(user);
+            loginPanel.setUser(user);
             loginPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
