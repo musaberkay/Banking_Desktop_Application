@@ -1,18 +1,20 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.User;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
+@Component
 public class ViewTransactionHist extends JPanel {
     private User user;
     private final JButton back;
     private final JTable transactions;
     private final ViewTransactionHist currentPanel;
-    public ViewTransactionHist(Dimension size){
+    public ViewTransactionHist(){
         currentPanel    = this;
         back            = new JButton("Back");
 
@@ -45,7 +47,6 @@ public class ViewTransactionHist extends JPanel {
 
 
         //DO NOT TOUCH below
-        this.setSize(size);
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.CENTER;

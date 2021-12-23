@@ -1,12 +1,14 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.User;
-import com.cs320_mts.service.UserService;
+import com.cs320_mts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class Login extends JPanel {
     private User user;
     private final JLabel identificationNumber;
@@ -19,9 +21,9 @@ public class Login extends JPanel {
     private final JLabel space;
 
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
-    public Login(Dimension size){
+    public Login(){
         currentPanel = this;
 
         identificationNumber 		= new JLabel("Identification Number");
@@ -63,7 +65,6 @@ public class Login extends JPanel {
         identificationNumberText.setFont(new Font("Arial", Font.ITALIC ,35));
         passwordText.setFont(new Font("Arial", Font.ITALIC ,40));
 
-        this.setSize(size);
         this.add(identificationNumber,c1);
         this.add(identificationNumberText,c2);
         identificationNumberText.setHorizontalAlignment(JTextField.CENTER);

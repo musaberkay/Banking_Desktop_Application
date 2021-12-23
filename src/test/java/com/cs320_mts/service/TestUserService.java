@@ -3,16 +3,10 @@ package com.cs320_mts.service;
 import com.cs320_mts.model.Account;
 import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
-import com.cs320_mts.repository.AccountRepository;
-import com.cs320_mts.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.cs320_mts.service.UserService;
 
-import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.List;
 
 @SpringBootTest
 public class TestUserService
@@ -32,7 +26,7 @@ public class TestUserService
     {
 
         // Creation of first User
-        User user = new User("Kerem","Ersan",12345,"07-04-2000","35007269396","kerem.ersan@ozu.edu.tr","5057656825");
+        User user = new User("Kerem","Ersan",123456,"07-04-2000","35007269396","kerem.ersan@ozu.edu.tr","5057656825");
 
         // Creation of first User's first account.
         Account account = new Account(300,user);

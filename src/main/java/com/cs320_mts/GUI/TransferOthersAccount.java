@@ -1,14 +1,14 @@
 package com.cs320_mts.GUI;
 
-import com.cs320_mts.model.Account;
-import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static java.lang.Integer.parseInt;
 
+@Component
 public class TransferOthersAccount extends JPanel {
     private User user;
     private final JLabel accountSender;
@@ -24,7 +24,7 @@ public class TransferOthersAccount extends JPanel {
     private final TransferOthersAccount currentPanel;
 
 
-    public TransferOthersAccount(Dimension size){
+    public TransferOthersAccount(){
         currentPanel = this;
 
         accountSender   = new JLabel("Choose Sender Account");
@@ -100,7 +100,6 @@ public class TransferOthersAccount extends JPanel {
         confirm.setFont(new Font("Arial",Font.ITALIC,30));
         back.setFont(new Font("Arial",Font.ITALIC,30));
 
-        this.setSize(size);
         this.add(accountSender,c9);
         this.add(accountsList,c10);
         this.add(accountID,c1);

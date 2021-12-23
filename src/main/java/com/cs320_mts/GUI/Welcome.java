@@ -1,13 +1,16 @@
 package com.cs320_mts.GUI;
 
+import org.springframework.stereotype.Component;
+
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class Welcome extends JPanel {
     private final JButton login;
     private final JButton register;
     private final Welcome currentPanel;
-    public Welcome(Dimension size){
+    public Welcome(){
         currentPanel = this;
         login        = new JButton("Login");
         register     = new JButton("Register");
@@ -22,7 +25,6 @@ public class Welcome extends JPanel {
         c.ipadx = 150;
         login.setFont(new Font("Arial",Font.ITALIC,20));
         register.setFont(new Font("Arial",Font.ITALIC,20));
-        this.setSize(size);
         this.add(login,c);
         this.add(register,c);
 

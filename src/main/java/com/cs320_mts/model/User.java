@@ -2,7 +2,6 @@ package com.cs320_mts.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity

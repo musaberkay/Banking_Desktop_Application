@@ -2,10 +2,12 @@ package com.cs320_mts.GUI;
 
 import ch.qos.logback.core.joran.spi.ActionException;
 import com.cs320_mts.model.User;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class TransferOwnAccount extends JPanel {
     private User user;
     private final JLabel accountSender;
@@ -17,7 +19,8 @@ public class TransferOwnAccount extends JPanel {
     private final JButton confirm;
     private final JButton back;
     private final TransferOwnAccount currentPanel;
-    public TransferOwnAccount(Dimension size){
+
+    public TransferOwnAccount(){
         currentPanel            = this;
         accountSender           = new JLabel("Choose Sender Account");
         accountReceiver         = new JLabel("Choose Receiver Account");
@@ -81,7 +84,6 @@ public class TransferOwnAccount extends JPanel {
         back.setFont(new Font("Arial",Font.ITALIC,30));
 
 
-        this.setSize(size);
         this.add(accountSender,c1);
         this.add(accountsList1,c2);
         this.add(accountReceiver,c7);

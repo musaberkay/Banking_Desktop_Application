@@ -6,9 +6,11 @@ import com.cs320_mts.service.UserService;
 import javax.swing.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.awt.*;
 
+@Component
 public class ChangePassword  extends JPanel {
 	
 	@Autowired
@@ -24,7 +26,7 @@ public class ChangePassword  extends JPanel {
 
     private final ChangePassword currentPanel;
 
-    public ChangePassword(Dimension size){
+    public ChangePassword(){
         currentPanel = this;
 
         oldPassword 			= new JLabel("Old Password");
@@ -66,7 +68,6 @@ public class ChangePassword  extends JPanel {
         confirm.setFont(new Font("Arial", Font.ITALIC ,40));
         back.setFont(new Font("Arial", Font.ITALIC ,40));
 
-        this.setSize(size);
         this.add(oldPassword,c1);
         this.add(oldPasswordField,c2);
         oldPasswordField.setHorizontalAlignment(JTextField.CENTER);

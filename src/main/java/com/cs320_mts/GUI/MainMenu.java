@@ -1,10 +1,12 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.User;
+import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
 
+@Component
 public class MainMenu extends JPanel {
     private User user;
     private final JButton createAccount;
@@ -17,7 +19,7 @@ public class MainMenu extends JPanel {
 
     private final MainMenu currentPanel;
 
-    public MainMenu(Dimension size) {
+    public MainMenu() {
         currentPanel = this;
 
         createAccount 			= new JButton("Create Account");
@@ -29,7 +31,6 @@ public class MainMenu extends JPanel {
         exit					= new JButton("Exit");
 
         //LAYOUT
-        this.setSize(size);
         this.setLayout(new GridLayout(7, 1));
 
         createAccount.setFont(new Font("Arial",Font.ITALIC,20));
