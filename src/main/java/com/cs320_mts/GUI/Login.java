@@ -1,6 +1,8 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +18,8 @@ public class Login extends JPanel {
     private final Login currentPanel;
     private final JLabel space;
 
+    @Autowired
+    UserService userService;
 
     public Login(Dimension size){
         currentPanel = this;
@@ -86,8 +90,21 @@ public class Login extends JPanel {
                 if (!(identificationNumberInput.charAt(i) >= '0' && identificationNumberInput.charAt(i) <= '9'))
                     throw new NumberFormatException();
             }
-                // user = GET User information FROM DATABASE !!!
-                // User user = new User() set attributes from Database
+
+            // user = GET User information FROM DATABASE !!!
+            if(userService.getByIdentificationNumber(identificationNumberInput)!=null){
+                if(userService.getByIdentificationNumber(identificationNumberInput).getPassword()==passwordInput){
+                    user = userService.getByIdentificationNumber(identificationNumberInput);
+                }
+                else{
+                    throw new Exception("Password is wrong.");
+                }
+            }
+            else{
+                throw new Exception("This user is not registered.");
+            }
+            // User is login succesfully if everything OK.
+
             mainMenu.setUser(user);
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
@@ -96,6 +113,9 @@ public class Login extends JPanel {
                         JOptionPane.ERROR_MESSAGE);
             }catch (NumberFormatException es){
                 JOptionPane.showMessageDialog(new JFrame(),"Password and Identification number must be digit" , "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }catch (Exception es){
+                JOptionPane.showMessageDialog(new JFrame(),es.getMessage() , "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
         });

@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer>
 {
-
+    public User getByIdentificationNumber(String id_num);
 }

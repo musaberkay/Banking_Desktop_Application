@@ -39,4 +39,9 @@ public class UserServiceImpl implements UserService
     public void deleteAll() {
         userRepository.deleteAll();
     }
+
+    @Override
+    public User getByIdentificationNumber(String id_num){
+        return userRepository.getByIdentificationNumber(id_num);
+    }
 }

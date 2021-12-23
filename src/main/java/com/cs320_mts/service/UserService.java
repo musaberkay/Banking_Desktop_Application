@@ -12,4 +12,5 @@ public interface UserService
     public User getById(int id);
     public void deleteById(int id);
     public void deleteAll();
+    public User getByIdentificationNumber(String id_num);
 }

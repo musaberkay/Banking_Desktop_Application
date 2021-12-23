@@ -80,10 +80,10 @@ public class TestUserService
     public void testCreateTransaction()
     {
         // creates transaction object.
-        Transaction transaction = new Transaction(30,151);
+        Transaction transaction = new Transaction(30,102);
 
         // retrieves the sender account. In this test, it is X.
-        Account senderAccount = accountService.getById(152);
+        Account senderAccount = accountService.getById(105);
         if(accountService.moneyTransfer(senderAccount.getAccountId(),transaction))
         {
             System.out.println("Money Transfer has been made successfully");
