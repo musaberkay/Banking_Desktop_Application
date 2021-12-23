@@ -7,20 +7,25 @@ import java.awt.*;
 
 public class TransferOwnAccount extends JPanel {
     private User user;
-    private final JLabel accounts;
+    private final JLabel accountSender;
+    private final JLabel accountReceiver;
     private final JLabel amount;
-    private final JList accountsList;
+    private final JList accountsList1;
+    private final JList accountsList2;
     private final JTextField amountText;
     private final JButton confirm;
     private final JButton back;
     private final TransferOwnAccount currentPanel;
     public TransferOwnAccount(Dimension size){
         currentPanel    = this;
-        accounts        = new JLabel("Accounts");
+        accountSender        = new JLabel("Choose Sender Account");
+        accountReceiver        = new JLabel("Choose Receiver Account");
         amount          = new JLabel("Amount");
 
         // ************ DATABASE ACTION NECESSARY ************
-        accountsList   = new JList(); // Add accounts to List, add id of account for each
+        accountsList1   = new JList(); // Add accounts to List, add id of account for each
+        accountsList2   = new JList(); // Add accounts to List, add id of account for each
+
         // DATABASE ACTION HERE
         // **********************************************************************
 
@@ -36,28 +41,36 @@ public class TransferOwnAccount extends JPanel {
         GridBagConstraints c4 = new GridBagConstraints();
         GridBagConstraints c5 = new GridBagConstraints();
         GridBagConstraints c6 = new GridBagConstraints();
+        GridBagConstraints c7 = new GridBagConstraints();
+        GridBagConstraints c8 = new GridBagConstraints();
 
         c1.gridy = 0;
         c2.gridy = 1;
-        c3.gridy = 2;
-        c4.gridy = 3;
-        c5.gridy = 4;
-        c6.gridy = 5;
+        c7.gridy = 2;
+        c8.gridy = 3;
+        c3.gridy = 4;
+        c4.gridy = 5;
+        c5.gridy = 6;
+        c6.gridy = 7;
 
         c4.ipady = 20;
         c4.ipadx = 180;
 
         amount.setFont(new Font("Arial",Font.BOLD,20));
         amountText.setFont(new Font("Arial",Font.BOLD,20));
-        accounts.setFont(new Font("Arial", Font.BOLD ,20));
-        accountsList.setFont(new Font("Arial", Font.BOLD ,20));
+        accountSender.setFont(new Font("Arial", Font.BOLD ,20));
+        accountsList1.setFont(new Font("Arial", Font.BOLD ,20));
+        accountReceiver.setFont(new Font("Arial", Font.BOLD ,20));
+        accountsList2.setFont(new Font("Arial", Font.BOLD ,20));
         confirm.setFont(new Font("Arial",Font.BOLD,20));
         back.setFont(new Font("Arial",Font.BOLD,20));
 
 
         this.setSize(size);
-        this.add(accounts,c1);
-        this.add(accountsList,c2);
+        this.add(accountSender,c1);
+        this.add(accountsList1,c2);
+        this.add(accountReceiver,c7);
+        this.add(accountsList2,c8);
         this.add(amount,c3);
         this.add(amountText,c4);
         amountText.setHorizontalAlignment(JTextField.CENTER);
@@ -67,7 +80,8 @@ public class TransferOwnAccount extends JPanel {
     // ************ DATA HAS RECEIVED. DATABASE ACTION NECESSARY ************
     public void setConfirmButton(MainMenu mainMenu){
         confirm.addActionListener(e -> {
-            int selectedAccountId = Integer.parseInt(accountsList.getSelectedValue().toString());
+            int selectedSenderAccountId = Integer.parseInt(accountsList1.getSelectedValue().toString());
+            int selectedReceiverAccountId = Integer.parseInt(accountsList2.getSelectedValue().toString());
             double amount = Double.parseDouble(amountText.getText());
             // DATABASE ACTION HERE
 

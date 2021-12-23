@@ -26,7 +26,7 @@ public class MainMenu extends JPanel {
         transferOthersAccount	= new JButton("Transfer Others Account");
         viewTransactionHistory  = new JButton("View Transaction History");
         changePassword			= new JButton("Change Password");
-        exit					= new JButton("Create Account");
+        exit					= new JButton("Exit");
 
         //LAYOUT
         this.setSize(size);
