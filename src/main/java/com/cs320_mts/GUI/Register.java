@@ -1,10 +1,12 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Register extends JPanel {
-    private int userId;
+    private User user;
     private final JLabel name;
     private final JLabel surname;
     private final JLabel password;
@@ -161,7 +163,7 @@ public class Register extends JPanel {
             currentPanel.setVisible(false);
         });
     }
-    public void setUserId(int id){
-        userId = id;
+    public void setUserId(User user){
+        user = user;
     }
 }
