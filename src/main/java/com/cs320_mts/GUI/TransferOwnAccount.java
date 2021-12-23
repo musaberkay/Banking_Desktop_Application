@@ -1,5 +1,6 @@
 package com.cs320_mts.GUI;
 
+import ch.qos.logback.core.joran.spi.ActionException;
 import com.cs320_mts.model.User;
 
 import javax.swing.*;
@@ -94,19 +95,39 @@ public class TransferOwnAccount extends JPanel {
     // ************ DATA HAS RECEIVED. DATABASE ACTION NECESSARY ************
     public void setConfirmButton(MainMenu mainMenu){
         confirm.addActionListener(e -> {
-            int selectedSenderAccountId = Integer.parseInt(accountsList1.getSelectedValue().toString());
-            int selectedReceiverAccountId = Integer.parseInt(accountsList2.getSelectedValue().toString());
-            double amount = Double.parseDouble(amountText.getText());
+            try {
+                if(accountsList1.isSelectionEmpty()) {
+                    throw new Exception("Please choose sender account!");
+                }
+                if(accountsList2.isSelectionEmpty()) {
+                    throw new Exception("Please choose receiver account!");
+                }
+                int selectedSenderAccountId = Integer.parseInt(String.valueOf(accountsList1.getSelectedValue()));
+                int selectedReceiverAccountId = Integer.parseInt(String.valueOf(accountsList2.getSelectedValue()));
 
-            // DATABASE ACTION HERE
-            // Check necessary constraint using User class object (user: User)
-            // Update Both database and User object if it is valid transfer
+                System.out.println(selectedSenderAccountId);
+                System.out.println(selectedReceiverAccountId);
+                double amount = Double.parseDouble(amountText.getText());
 
 
-            // ************ DON'T TOUCH ************
-            mainMenu.setUser(user);
-            mainMenu.setVisible(true);
-            currentPanel.setVisible(false);
+                // DATABASE ACTION HERE
+                // Check necessary constraint using User class object (user: User)
+                // Update Both database and User object if it is valid transfer
+
+
+                // ************ DON'T TOUCH ************
+                mainMenu.setUser(user);
+                mainMenu.setVisible(true);
+                currentPanel.setVisible(false);
+            }catch (NumberFormatException es1){
+                JOptionPane.showMessageDialog(new JFrame(), "Amount must be valid! ", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            catch(Exception es2){
+                JOptionPane.showMessageDialog(new JFrame(),es2.getMessage()  , "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
         });
     }
     // ************ DON'T TOUCH ************
