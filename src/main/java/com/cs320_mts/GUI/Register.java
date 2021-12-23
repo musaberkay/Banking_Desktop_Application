@@ -96,22 +96,22 @@ public class Register extends JPanel {
 
         c15.insets = new Insets(20,0,20,0);
 
-        name.setFont(new Font("Arial",Font.BOLD,20));
-        nameText.setFont(new Font("Arial",Font.BOLD,20));
-        surname.setFont(new Font("Arial",Font.BOLD,20));
-        surnameText.setFont(new Font("Arial",Font.BOLD,20));
-        password.setFont(new Font("Arial", Font.BOLD ,20));
-        passwordText.setFont(new Font("Arial", Font.BOLD ,20));
-        dateOfBirth.setFont(new Font("Arial",Font.BOLD,20));
-        dateOfBirthText.setFont(new Font("Arial",Font.BOLD,20));
-        identificationNumber.setFont(new Font("Arial",Font.BOLD,20));
-        identificationNumberText.setFont(new Font("Arial",Font.BOLD,20));
-        email.setFont(new Font("Arial",Font.BOLD,20));
-        emailText.setFont(new Font("Arial",Font.BOLD,20));
-        phoneNumber.setFont(new Font("Arial", Font.BOLD ,20));
-        phoneNumberText.setFont(new Font("Arial", Font.BOLD ,20));
-        register.setFont(new Font("Arial",Font.BOLD,20));
-        back.setFont(new Font("Arial",Font.BOLD,20));
+        name.setFont(new Font("Arial",Font.ITALIC,20));
+        nameText.setFont(new Font("Arial",Font.ITALIC,20));
+        surname.setFont(new Font("Arial",Font.ITALIC,20));
+        surnameText.setFont(new Font("Arial",Font.ITALIC,20));
+        password.setFont(new Font("Arial", Font.ITALIC ,20));
+        passwordText.setFont(new Font("Arial", Font.ITALIC ,20));
+        dateOfBirth.setFont(new Font("Arial",Font.ITALIC,20));
+        dateOfBirthText.setFont(new Font("Arial",Font.ITALIC,20));
+        identificationNumber.setFont(new Font("Arial",Font.ITALIC,20));
+        identificationNumberText.setFont(new Font("Arial",Font.ITALIC,20));
+        email.setFont(new Font("Arial",Font.ITALIC,20));
+        emailText.setFont(new Font("Arial",Font.ITALIC,20));
+        phoneNumber.setFont(new Font("Arial", Font.ITALIC ,20));
+        phoneNumberText.setFont(new Font("Arial", Font.ITALIC ,20));
+        register.setFont(new Font("Arial",Font.ITALIC,20));
+        back.setFont(new Font("Arial",Font.ITALIC,20));
 
         this.setSize(size);
         this.add(name,c1);

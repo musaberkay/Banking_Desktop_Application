@@ -54,8 +54,8 @@ public class Login extends JPanel {
 
         identificationNumber.setFont(new Font("Arial",Font.ITALIC,40));
         password.setFont(new Font("Arial",Font.ITALIC,40));
-        login.setFont(new Font("Arial",Font.BOLD,25));
-        back.setFont(new Font("Arial",Font.BOLD,25));
+        login.setFont(new Font("Arial",Font.ITALIC,25));
+        back.setFont(new Font("Arial",Font.ITALIC,25));
         identificationNumberText.setFont(new Font("Arial", Font.ITALIC ,35));
         passwordText.setFont(new Font("Arial", Font.ITALIC ,40));
 
