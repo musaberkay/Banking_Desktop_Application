@@ -78,32 +78,40 @@ public class TransferOthersAccount extends JPanel {
         c8.gridy = 9;
 
         c2.ipady = 20;
-        c2.ipadx = 180;
+        c2.ipadx = 220;
         c4.ipady = 20;
-        c4.ipadx = 180;
+        c4.ipadx = 220;
         c6.ipady = 20;
-        c6.ipadx = 180;
+        c6.ipadx = 240;
 
-        accountSender.setFont(new Font("Arial",Font.BOLD,20));
-        accountsList.setFont(new Font("Arial",Font.ITALIC,20));
-        accountID.setFont(new Font("Arial",Font.BOLD,20));
-        accountIDText.setFont(new Font("Arial",Font.BOLD,20));
-        amount.setFont(new Font("Arial",Font.BOLD,20));
-        amountText.setFont(new Font("Arial",Font.BOLD,20));
-        name.setFont(new Font("Arial", Font.BOLD ,20));
-        nameText.setFont(new Font("Arial", Font.BOLD ,20));
-        confirm.setFont(new Font("Arial",Font.BOLD,20));
-        back.setFont(new Font("Arial",Font.BOLD,20));
+        c1.insets = new Insets(20,0,0,0);
+        c3.insets = new Insets(20,0,0,0);
+        c5.insets = new Insets(20,0,0,0);
+        c7.insets = new Insets(20,0,20,0);
+
+        accountSender.setFont(new Font("Arial",Font.ITALIC,30));
+        accountsList.setFont(new Font("Arial",Font.ITALIC,30));
+        accountID.setFont(new Font("Arial",Font.ITALIC,30));
+        accountIDText.setFont(new Font("Arial",Font.ITALIC,30));
+        amount.setFont(new Font("Arial",Font.ITALIC,30));
+        amountText.setFont(new Font("Arial",Font.ITALIC,30));
+        name.setFont(new Font("Arial", Font.ITALIC ,30));
+        nameText.setFont(new Font("Arial", Font.ITALIC ,30));
+        confirm.setFont(new Font("Arial",Font.ITALIC,30));
+        back.setFont(new Font("Arial",Font.ITALIC,30));
 
         this.setSize(size);
         this.add(accountSender,c9);
         this.add(accountsList,c10);
         this.add(accountID,c1);
         this.add(accountIDText,c2);
+        accountIDText.setHorizontalAlignment(JTextField.CENTER);
         this.add(amount,c3);
         this.add(amountText,c4);
+        amountText.setHorizontalAlignment(JTextField.CENTER);
         this.add(name,c5);
         this.add(nameText,c6);
+        nameText.setHorizontalAlignment(JTextField.CENTER);
         this.add(confirm,c7);
         this.add(back,c8);
     }
