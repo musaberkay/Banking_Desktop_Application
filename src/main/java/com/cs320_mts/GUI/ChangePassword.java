@@ -1,11 +1,19 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.UserService;
 
 import javax.swing.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.awt.*;
 
 public class ChangePassword  extends JPanel {
+	
+	@Autowired
+	UserService userService;
+	
     private User user;
     private JLabel oldPassword;
     private JLabel newPassword;
@@ -78,15 +86,20 @@ public class ChangePassword  extends JPanel {
                         String oldPasswordText = String.valueOf(oldPasswordField.getPassword());
                         String newPasswordText = String.valueOf(newPasswordField.getPassword());
 
-                            if(oldPasswordText.length() != 6)
-                                throw new ArithmeticException("Old Password must be 6 digit number");
+                        if(oldPasswordText.length() != 6)
+                            throw new ArithmeticException("Old Password must be 6 digit number");
                         int passwordInputOld = Integer.parseInt(oldPasswordText);
-                            if(newPasswordText.length() != 6)
-                                throw new ArithmeticException("New Password must be 6 digit number");
+                        if(newPasswordText.length() != 6)
+                            throw new ArithmeticException("New Password must be 6 digit number");
                         int passwordInputNew = Integer.parseInt(newPasswordText);
 
 
                         //DATABASE Actions need to be triggered here
+                        int oldPassword = Integer.parseInt(oldPasswordText);
+                        int newPassword = Integer.parseInt(newPasswordText);
+                        
+                        userService.changePassword(user.getUserId(), oldPassword, newPassword);
+                        
 
                         backPanel.setVisible(true);
                         currentPanel.setVisible(false);
