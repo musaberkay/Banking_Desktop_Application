@@ -94,6 +94,8 @@ public class Register extends JPanel {
         c14.ipady = 20;
         c14.ipadx = 180;
 
+        c15.insets = new Insets(20,0,20,0);
+
         name.setFont(new Font("Arial",Font.BOLD,20));
         nameText.setFont(new Font("Arial",Font.BOLD,20));
         surname.setFont(new Font("Arial",Font.BOLD,20));
