@@ -81,6 +81,7 @@ public class Login extends JPanel {
             try{
             String identificationNumberInput = identificationNumberText.getText();
             String myPass=String.valueOf(passwordText.getPassword());
+            System.out.println(myPass);
             if(identificationNumberInput.length() != 11)
                 throw new ArithmeticException("Identification number must be 11 digit number");
             if(myPass.length() != 6)
