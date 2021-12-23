@@ -22,10 +22,16 @@ public class TransferOwnAccount extends JPanel {
         accountReceiver        = new JLabel("Choose Receiver Account");
         amount          = new JLabel("Amount");
 
+        DefaultListModel listModel;
+        listModel = new DefaultListModel();
         // ************ DATABASE ACTION NECESSARY ************
-        accountsList1   = new JList(); // Add accounts to List, add id of account for each
-        accountsList2   = new JList(); // Add accounts to List, add id of account for each
 
+        listModel.addElement("Account1");
+        listModel.addElement("Account2");
+        listModel.addElement("Account3");
+        accountsList1   = new JList(listModel); // Add accounts to List, add id of account for each
+        accountsList2   = new JList(listModel); // Add accounts to List, add id of account for each
+        //ADD ACCOUNTS WITH user.getAccounts().toString();
         // DATABASE ACTION HERE
         // **********************************************************************
 
@@ -59,9 +65,9 @@ public class TransferOwnAccount extends JPanel {
         amount.setFont(new Font("Arial",Font.BOLD,20));
         amountText.setFont(new Font("Arial",Font.BOLD,20));
         accountSender.setFont(new Font("Arial", Font.BOLD ,20));
-        accountsList1.setFont(new Font("Arial", Font.BOLD ,20));
+        accountsList1.setFont(new Font("Arial", Font.ITALIC ,20));
         accountReceiver.setFont(new Font("Arial", Font.BOLD ,20));
-        accountsList2.setFont(new Font("Arial", Font.BOLD ,20));
+        accountsList2.setFont(new Font("Arial", Font.ITALIC ,20));
         confirm.setFont(new Font("Arial",Font.BOLD,20));
         back.setFont(new Font("Arial",Font.BOLD,20));
 

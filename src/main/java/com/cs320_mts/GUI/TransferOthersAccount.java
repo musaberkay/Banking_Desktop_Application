@@ -1,5 +1,6 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.Account;
 import com.cs320_mts.model.User;
 
 import javax.swing.*;
@@ -33,10 +34,19 @@ public class TransferOthersAccount extends JPanel {
         confirm			= new JButton("Confirm");
         back			= new JButton("Back");
 
+
+        DefaultListModel listModel;
+        listModel = new DefaultListModel();
+
         // ************ DATABASE ACTION NECESSARY ************
-        accountsList    = new JList(); // Add accounts to List, add id of account for each
-        // DATABASE ACTION HERE
+        // accountsList    = new JList(); // Add accounts to List, add id of account for each
+        listModel.addElement("AccountId1");
+        listModel.addElement("AccountId2");
+        listModel.addElement("AccountId3");
+        accountsList    = new JList(listModel);
+        // DATABASE ACTION HERE //ADD ACCOUNTS WITH user.getAccounts().toString();
         // **********************************************************************
+
 
         //LAYOUT
         this.setLayout(new GridBagLayout());
@@ -70,7 +80,7 @@ public class TransferOthersAccount extends JPanel {
         c6.ipadx = 180;
 
         accountSender.setFont(new Font("Arial",Font.BOLD,20));
-        accountsList.setFont(new Font("Arial",Font.BOLD,20));
+        accountsList.setFont(new Font("Arial",Font.ITALIC,20));
         accountID.setFont(new Font("Arial",Font.BOLD,20));
         accountIDText.setFont(new Font("Arial",Font.BOLD,20));
         amount.setFont(new Font("Arial",Font.BOLD,20));
