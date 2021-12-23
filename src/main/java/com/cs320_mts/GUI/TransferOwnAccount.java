@@ -28,7 +28,7 @@ public class TransferOwnAccount extends JPanel {
 
         // ************ MODEL ACTION NECESSARY ************
 
-        listModel.addElement("312312"); // Example adding to list
+        listModel.addElement("3123125555555"); // Example adding to list
         listModel.addElement("32322");
         listModel.addElement("323232");
         accountsList1   = new JList(listModel);
@@ -64,16 +64,20 @@ public class TransferOwnAccount extends JPanel {
         c6.gridy = 7;
 
         c4.ipady = 20;
-        c4.ipadx = 180;
+        c4.ipadx = 220;
 
-        amount.setFont(new Font("Arial",Font.BOLD,20));
-        amountText.setFont(new Font("Arial",Font.BOLD,20));
-        accountSender.setFont(new Font("Arial", Font.BOLD ,20));
-        accountsList1.setFont(new Font("Arial", Font.ITALIC ,20));
-        accountReceiver.setFont(new Font("Arial", Font.BOLD ,20));
-        accountsList2.setFont(new Font("Arial", Font.ITALIC ,20));
-        confirm.setFont(new Font("Arial",Font.BOLD,20));
-        back.setFont(new Font("Arial",Font.BOLD,20));
+        c7.insets = new Insets(20,0,0,0);
+        c3.insets = new Insets(20,0,0,0);
+        c5.insets = new Insets(20,0,20,0);
+
+        amount.setFont(new Font("Arial",Font.ITALIC,40));
+        amountText.setFont(new Font("Arial",Font.ITALIC,30));
+        accountSender.setFont(new Font("Arial", Font.ITALIC ,40));
+        accountsList1.setFont(new Font("Arial", Font.ITALIC ,30));
+        accountReceiver.setFont(new Font("Arial", Font.ITALIC ,40));
+        accountsList2.setFont(new Font("Arial", Font.ITALIC ,30));
+        confirm.setFont(new Font("Arial",Font.ITALIC,30));
+        back.setFont(new Font("Arial",Font.ITALIC,30));
 
 
         this.setSize(size);
