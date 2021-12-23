@@ -43,11 +43,7 @@ public class TransferOwnAccount extends JPanel {
 
         // ************ MODEL ACTION NECESSARY ************
         
-//        listModel.addElement("3123125555555"); // Example adding to list
-//        listModel.addElement("32322");
-//        listModel.addElement("323232");
-        
-        List<Account> accounts = accountService.findByUserId(user.getUserId());
+        List<Account> accounts = user.getAccounts();
         for(Account account : accounts) {
         	listModel.addElement(account.getAccountId());
         }
@@ -129,9 +125,6 @@ public class TransferOwnAccount extends JPanel {
 
 
                 // DATABASE ACTION HERE
-                // Check necessary constraint using User class object (user: User)
-                // Update Both database and User object if it is valid transfer
-
                 Transaction transaction = new Transaction();
                 transaction.setReceiverAccId(selectedReceiverAccountId);
                 transaction.setAmount(amount);
