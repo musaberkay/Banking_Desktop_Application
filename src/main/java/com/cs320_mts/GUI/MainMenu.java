@@ -44,7 +44,7 @@ public class MainMenu extends JPanel {
     //new account must be added to DB
     public void setCreateAccount(){
         createAccount.addActionListener(e -> {
-
+        //DATABASE ACTIONS HERE
 
         });
     }
