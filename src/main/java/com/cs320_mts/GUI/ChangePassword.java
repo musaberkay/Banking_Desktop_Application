@@ -47,12 +47,16 @@ public class ChangePassword  extends JPanel {
         c4.ipady = 20;
         c4.ipadx = 180;
 
-        oldPassword.setFont(new Font("Arial",Font.BOLD,20));
-        oldPasswordField.setFont(new Font("Arial",Font.BOLD,20));
-        newPassword.setFont(new Font("Arial",Font.BOLD,20));
-        newPasswordField.setFont(new Font("Arial",Font.BOLD,20));
-        confirm.setFont(new Font("Arial", Font.BOLD ,20));
-        back.setFont(new Font("Arial", Font.BOLD ,20));
+        c3.insets = new Insets(20,0,0,0);
+        c5.insets = new Insets(20,0,20,0);
+
+
+        oldPassword.setFont(new Font("Arial",Font.ITALIC,40));
+        oldPasswordField.setFont(new Font("Arial",Font.ITALIC,40));
+        newPassword.setFont(new Font("Arial",Font.ITALIC,40));
+        newPasswordField.setFont(new Font("Arial",Font.ITALIC,40));
+        confirm.setFont(new Font("Arial", Font.ITALIC ,40));
+        back.setFont(new Font("Arial", Font.ITALIC ,40));
 
         this.setSize(size);
         this.add(oldPassword,c1);
