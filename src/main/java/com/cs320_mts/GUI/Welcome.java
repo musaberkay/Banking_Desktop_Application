@@ -28,12 +28,14 @@ public class Welcome extends JPanel {
 
 
     }
+    // ************ DON'T TOUCH ************
     public void setLoginButton(Login loginPanel){
         login.addActionListener(e -> {
             loginPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
     }
+    // ************ DON'T TOUCH ************
     public void setRegisterButton(Register registerPanel){
         register.addActionListener(e -> {
             registerPanel.setVisible(true);
