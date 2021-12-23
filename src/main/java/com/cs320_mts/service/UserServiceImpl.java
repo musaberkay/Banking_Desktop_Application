@@ -44,4 +44,10 @@ public class UserServiceImpl implements UserService
     public User getByIdentificationNumber(String id_num){
         return userRepository.getByIdentificationNumber(id_num);
     }
+    
+    @Override
+	@Transactional
+	public void changePassword(int userId, int oldPassword, int newPassword) {
+		userRepository.changePassword(userId, oldPassword, newPassword);
+	}
 }
