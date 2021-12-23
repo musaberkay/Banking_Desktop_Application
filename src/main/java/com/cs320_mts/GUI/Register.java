@@ -146,11 +146,20 @@ public class Register extends JPanel {
             int year    = Integer.parseInt(userDateOfBirth.substring(0,4));
             int month   = Integer.parseInt(userDateOfBirth.substring(5,7));
             int day     = Integer.parseInt(userDateOfBirth.substring(8,10));
+
+            // NEEDS TO BE CHECKED ON DATABASE, THEY ARE UNIQUE
             String userIdentificationNumber     = identificationNumberText.getText();
             String userEmail                    = emailText.getText();
             String userPhoneNumber              = phoneNumberText.getText();
+
+
             // DATABASE ACTION HERE
-            // userId = GET USER ID FROM DATABASE
+            // Create new User Object named "user"
+
+
+
+            // ************ DON'T TOUCH ************
+            mainMenu.setUser(user);
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
 
