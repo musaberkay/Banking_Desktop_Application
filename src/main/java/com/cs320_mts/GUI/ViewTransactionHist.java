@@ -20,8 +20,12 @@ public class ViewTransactionHist extends JPanel {
         DefaultTableModel model = new DefaultTableModel(columns,0);
         transactions            = new JTable(model);
 
+        // ************ DON'T TOUCH ************
         model.addRow(new String[]{"Transaction Id","Date","Amount","Sender Account","Receiver Account"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        // ************ DON'T TOUCH ************
+
+
+        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"}); // Example for adding row
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
@@ -32,17 +36,11 @@ public class ViewTransactionHist extends JPanel {
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
 
-        // ************ DATABASE ACTION NECESSARY ************
-        // DATABASE ACTION HERE
+        // ************ MODEL ACTION NECESSARY ************
+        // MODEL ACTION HERE
         // LAST 10 TRANSACTIONS!!!
         // use model.addRow() with 5 String tuple For each transaction
         // model.addRow(new String[]{"2345","2021-12-01,"1200$","123850291","742930123"})
-        // model.addRow(new String[]{"
-        //user.getAccounts().get().getTransactions().get().getTransactionId()
-        // user.getAccounts().get().getTransactions().get().getDate()
-        // user.getAccounts().get().getTransactions().get().getAmount()
-        //user.getAccounts().get().getAccountId()
-        //user.getAccounts().get().getTransactions().get().getRecipientAccId()        "}
         // **********************************************************************
 
 
