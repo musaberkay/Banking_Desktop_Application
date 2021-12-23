@@ -17,18 +17,18 @@ public class TransferOwnAccount extends JPanel {
     private final JButton back;
     private final TransferOwnAccount currentPanel;
     public TransferOwnAccount(Dimension size){
-        currentPanel    = this;
-        accountSender        = new JLabel("Choose Sender Account");
-        accountReceiver        = new JLabel("Choose Receiver Account");
-        amount          = new JLabel("Amount");
+        currentPanel            = this;
+        accountSender           = new JLabel("Choose Sender Account");
+        accountReceiver         = new JLabel("Choose Receiver Account");
+        amount                  = new JLabel("Amount");
 
         DefaultListModel listModel;
         listModel = new DefaultListModel();
         // ************ DATABASE ACTION NECESSARY ************
 
-        listModel.addElement("Account1");
-        listModel.addElement("Account2");
-        listModel.addElement("Account3");
+        listModel.addElement("312312");
+        listModel.addElement("32322");
+        listModel.addElement("323232");
         accountsList1   = new JList(listModel); // Add accounts to List, add id of account for each
         accountsList2   = new JList(listModel); // Add accounts to List, add id of account for each
         //ADD ACCOUNTS WITH user.getAccounts().toString();
@@ -91,6 +91,7 @@ public class TransferOwnAccount extends JPanel {
             double amount = Double.parseDouble(amountText.getText());
             // DATABASE ACTION HERE
 
+            mainMenu.setUser(user);
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
         });
