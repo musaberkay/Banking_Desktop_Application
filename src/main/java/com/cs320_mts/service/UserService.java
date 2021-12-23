@@ -14,4 +14,7 @@ public interface UserService
     public void deleteAll();
     public User getByIdentificationNumber(String id_num);
     public void changePassword(int userId, int oldPassword, int newPassword);
+    public List<String> getIdentificationNumberList();
+    public List<String> getPhoneNumberList();
+    public List<String> getEmailList();
 }
