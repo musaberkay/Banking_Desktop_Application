@@ -24,14 +24,20 @@ public class CheckBalance extends JPanel {
         DefaultTableModel model = new DefaultTableModel(columns,0);
         table                   = new JTable(model);
         model.addRow(new String[]{"Account Id","Balance"});
-        model.addRow(new String[]{"33333333333","333333333333333"});
-        model.addRow(new String[]{"12321312312","312312312312312"});
+        //DO NOT TOUCH ABOVE, IF IT'S POSSIBLE
+
         // ************ DATABASE ACTION NECESSARY ************
         // DATABASE ACTION HERE
         // use model.addRow() with 2 String tuple For each transaction
         // model.addRow(new String[]{"5634", "3250"})
+        //EXAMPLES: (DELETE AFTER IMPL.)
+        model.addRow(new String[]{"33333333333","333333333333333"});
+        model.addRow(new String[]{"12321312312","312312312312312"});
         // model.addRow(new String[]{user.getAccounts().get(0).getAccountId(), user.getAccounts().get(0).getBalance().toString()}
         // **********************************************************************
+
+
+        //LAYOUT __ DO NOT TOUCH
         this.setSize(size);
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

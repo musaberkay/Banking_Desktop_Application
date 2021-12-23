@@ -71,6 +71,8 @@ public class ChangePassword  extends JPanel {
             String oldPasswordText = oldPasswordField.getPassword().toString();
             String newPasswordText = newPasswordField.getPassword().toString();
 
+            //DATABASE Actions need to be triggered here
+
             backPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
