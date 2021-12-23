@@ -77,7 +77,7 @@ public class ChangePassword  extends JPanel {
         this.add(back,c6);
 
     }
-    //DATABASE ACTION: PASSWORD NEEDS TO BE CHANGED !!!
+
     public void setConfirmButton(MainMenu backPanel){
 
 
@@ -94,11 +94,8 @@ public class ChangePassword  extends JPanel {
                         int passwordInputNew = Integer.parseInt(newPasswordText);
 
 
-                        //DATABASE Actions need to be triggered here
-                        int oldPassword = Integer.parseInt(oldPasswordText);
-                        int newPassword = Integer.parseInt(newPasswordText);
-                        
-                        userService.changePassword(user.getUserId(), oldPassword, newPassword);
+                        //DATABASE Action
+                        userService.changePassword(user.getUserId(), passwordInputOld, passwordInputNew);
                         
 
                         backPanel.setVisible(true);
