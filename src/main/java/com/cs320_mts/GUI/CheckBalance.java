@@ -29,7 +29,7 @@ public class CheckBalance extends JPanel {
         // model.addRow({"5634", "3250"})
         // **********************************************************************
 
-
+        this.setSize(size);
         this.add(back);
         this.add(table);
     }
