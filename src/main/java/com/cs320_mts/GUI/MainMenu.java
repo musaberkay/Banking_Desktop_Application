@@ -32,6 +32,14 @@ public class MainMenu extends JPanel {
         this.setSize(size);
         this.setLayout(new GridLayout(7, 1));
 
+        createAccount.setFont(new Font("Arial",Font.ITALIC,20));
+        checkBalance.setFont(new Font("Arial",Font.ITALIC,20));
+        transferOwnAccount.setFont(new Font("Arial",Font.ITALIC,20));
+        transferOthersAccount.setFont(new Font("Arial",Font.ITALIC,20));
+        viewTransactionHistory.setFont(new Font("Arial",Font.ITALIC,20));
+        changePassword.setFont(new Font("Arial",Font.ITALIC,20));
+        exit.setFont(new Font("Arial",Font.ITALIC,20));
+
         this.add(createAccount);
         this.add(checkBalance);
         this.add(transferOwnAccount);
