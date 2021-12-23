@@ -24,17 +24,21 @@ public class TransferOwnAccount extends JPanel {
 
         DefaultListModel listModel;
         listModel = new DefaultListModel();
-        // ************ DATABASE ACTION NECESSARY ************
 
-        listModel.addElement("312312");
+
+        // ************ MODEL ACTION NECESSARY ************
+
+        listModel.addElement("312312"); // Example adding to list
         listModel.addElement("32322");
         listModel.addElement("323232");
-        accountsList1   = new JList(listModel); // Add accounts to List, add id of account for each
-        accountsList2   = new JList(listModel); // Add accounts to List, add id of account for each
-        //ADD ACCOUNTS WITH user.getAccounts().toString();
-        // DATABASE ACTION HERE
+        accountsList1   = new JList(listModel);
+        accountsList2   = new JList(listModel);
+        // ADD ACCOUNTS WITH USING USER OBJECT
+        // MODEL ACTION HERE
         // **********************************************************************
 
+
+        // ************ DON'T TOUCH ************
         amountText      = new JTextField();
         confirm         = new JButton("Confirm");
         back            = new JButton("Back");
@@ -89,8 +93,13 @@ public class TransferOwnAccount extends JPanel {
             int selectedSenderAccountId = Integer.parseInt(accountsList1.getSelectedValue().toString());
             int selectedReceiverAccountId = Integer.parseInt(accountsList2.getSelectedValue().toString());
             double amount = Double.parseDouble(amountText.getText());
-            // DATABASE ACTION HERE
 
+            // DATABASE ACTION HERE
+            // Check necessary constraint using User class object (user: User)
+            // Update Both database and User object if it is valid transfer
+
+
+            // ************ DON'T TOUCH ************
             mainMenu.setUser(user);
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
