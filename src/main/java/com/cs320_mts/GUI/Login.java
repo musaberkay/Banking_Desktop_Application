@@ -36,9 +36,9 @@ public class Login extends JPanel {
         GridBagConstraints c5 = new GridBagConstraints();
         GridBagConstraints c6 = new GridBagConstraints();
         c2.ipady = 20;
-        c2.ipadx = 180;
+        c2.ipadx = 300;
         c4.ipady = 20;
-        c4.ipadx = 90;
+        c4.ipadx = 180;
         c1.gridy = 0;
         c2.gridy = 1;
         c3.gridy = 2;
@@ -50,12 +50,14 @@ public class Login extends JPanel {
         c6.ipady = 20;
         c6.ipadx = 20;
 
-        identificationNumber.setFont(new Font("Arial",Font.BOLD,20));
-        password.setFont(new Font("Arial",Font.BOLD,20));
-        login.setFont(new Font("Arial",Font.BOLD,15));
-        back.setFont(new Font("Arial",Font.BOLD,15));
-        identificationNumberText.setFont(new Font("Arial", Font.BOLD ,18));
-        passwordText.setFont(new Font("Arial", Font.BOLD ,28));
+        c5.insets = new Insets(20,0,20,0);
+
+        identificationNumber.setFont(new Font("Arial",Font.ITALIC,40));
+        password.setFont(new Font("Arial",Font.ITALIC,40));
+        login.setFont(new Font("Arial",Font.BOLD,25));
+        back.setFont(new Font("Arial",Font.BOLD,25));
+        identificationNumberText.setFont(new Font("Arial", Font.ITALIC ,35));
+        passwordText.setFont(new Font("Arial", Font.ITALIC ,40));
 
         this.setSize(size);
         this.add(identificationNumber,c1);
