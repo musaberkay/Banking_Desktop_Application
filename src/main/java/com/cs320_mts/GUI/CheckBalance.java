@@ -1,12 +1,14 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
 
 public class CheckBalance extends JPanel {
-    private int userId;
+    private User user;
     private final JButton back;
     private final JTable table;
 
@@ -40,7 +42,7 @@ public class CheckBalance extends JPanel {
         });
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User userId) {
+        this.user = user;
     }
 }

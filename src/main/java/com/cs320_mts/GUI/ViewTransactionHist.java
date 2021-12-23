@@ -1,11 +1,13 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class ViewTransactionHist extends JPanel {
-    private int userId;
+    private User user;
     private final JButton back;
     private final JTable transactions;
     private final ViewTransactionHist currentPanel;
@@ -34,7 +36,7 @@ public class ViewTransactionHist extends JPanel {
             currentPanel.setVisible(false);
         });
     }
-    public void setUserId(int id){
-        userId = id;
+    public void setUserId(User user){
+        user = user;
     }
 }

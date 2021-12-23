@@ -1,10 +1,12 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainMenu extends JPanel {
-    private int userId;
+    private User user;
     private final JButton createAccount;
     private final JButton checkBalance;
     private final JButton transferOwnAccount;
@@ -50,7 +52,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setCheckBalance(CheckBalance nextPanel){
         checkBalance.addActionListener(e -> {
-            nextPanel.setUserId(userId);
+            nextPanel.setUserId(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -59,7 +61,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setTransferOwnAccount(TransferOwnAccount nextPanel){
         transferOwnAccount.addActionListener(e -> {
-            nextPanel.setUserId(userId);
+            nextPanel.setUserId(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -68,7 +70,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setTransferOthersAccount(TransferOthersAccount nextPanel){
         transferOthersAccount.addActionListener(e -> {
-            nextPanel.setUserId(userId);
+            nextPanel.setUserId(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -77,7 +79,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setViewTransactionHist(ViewTransactionHist nextPanel){
         viewTransactionHistory.addActionListener(e -> {
-            nextPanel.setUserId(userId);
+            nextPanel.setUserId(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -86,7 +88,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setChangePassword(ChangePassword nextPanel){
         changePassword.addActionListener(e -> {
-            nextPanel.setUserId(userId);
+            nextPanel.setUserId(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -99,8 +101,8 @@ public class MainMenu extends JPanel {
         });
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
     }
 
 }

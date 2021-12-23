@@ -1,10 +1,12 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class ChangePassword  extends JPanel {
-    private int userId;
+    private User user;
     private JLabel oldPassword;
     private JLabel newPassword;
     private JPasswordField oldPasswordField;
@@ -82,8 +84,8 @@ public class ChangePassword  extends JPanel {
         });
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
     }
 
 }

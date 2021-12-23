@@ -1,10 +1,12 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class TransferOthersAccount extends JPanel {
-    private int userId;
+    private User user;
     private final JLabel accountID;
     private final JLabel amount;
     private final JLabel name;
@@ -92,8 +94,8 @@ public class TransferOthersAccount extends JPanel {
         });
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
     }
 }
 

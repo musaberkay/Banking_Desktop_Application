@@ -1,10 +1,12 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.User;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Login extends JPanel {
-    private int userId;
+    private User user;
     private final JLabel identificationNumber;
     private final JLabel password;
     private final JTextField identificationNumberText;
@@ -75,8 +77,9 @@ public class Login extends JPanel {
             String myPass=String.valueOf(passwordText.getPassword());
             int passwordInput = Integer.parseInt(myPass);
 
-            //userId = GET User ID FROM DATABASE !!!
-            loginPanel.setUserId(userId);
+            // user = GET User information FROM DATABASE !!!
+            // User user = new User() set attributes from Database
+            loginPanel.setUserId(user);
             loginPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
