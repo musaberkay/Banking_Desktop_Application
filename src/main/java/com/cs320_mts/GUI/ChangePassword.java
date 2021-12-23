@@ -72,13 +72,14 @@ public class ChangePassword  extends JPanel {
     //DATABASE ACTION: PASSWORD NEEDS TO BE CHANGED !!!
     public void setConfirmButton(MainMenu backPanel){
         confirm.addActionListener(e -> {
+
             String oldPasswordText = oldPasswordField.getPassword().toString();
             String newPasswordText = newPasswordField.getPassword().toString();
 
             //DATABASE Actions need to be triggered here
-
             backPanel.setVisible(true);
             currentPanel.setVisible(false);
+
         });
     }
 
