@@ -120,9 +120,9 @@ public class TransferOthersAccount extends JPanel {
     public void setConfirmButton(MainMenu backPanel){
         confirm.addActionListener(e -> {
             try {
-                if(accountsList.isSelectionEmpty()) {
-                    throw new Exception("Please choose sender account!");
-                }
+                    if(accountsList.isSelectionEmpty()) {
+                        throw new Exception("Please choose sender account!");
+                    }
                 int selectedSenderAccountId = parseInt(accountsList.getSelectedValue().toString());
                 int amountToSend = parseInt(amountText.getText());
                 int receiverAccountId = parseInt(accountIDText.getText());

@@ -78,11 +78,11 @@ public class ChangePassword  extends JPanel {
                         String oldPasswordText = String.valueOf(oldPasswordField.getPassword());
                         String newPasswordText = String.valueOf(newPasswordField.getPassword());
 
-                        if(oldPasswordText.length() != 6)
-                            throw new ArithmeticException("Old Password must be 6 digit number");
+                            if(oldPasswordText.length() != 6)
+                                throw new ArithmeticException("Old Password must be 6 digit number");
                         int passwordInputOld = Integer.parseInt(oldPasswordText);
-                        if(newPasswordText.length() != 6)
-                            throw new ArithmeticException("New Password must be 6 digit number");
+                            if(newPasswordText.length() != 6)
+                                throw new ArithmeticException("New Password must be 6 digit number");
                         int passwordInputNew = Integer.parseInt(newPasswordText);
 
 

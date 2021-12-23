@@ -96,17 +96,16 @@ public class TransferOwnAccount extends JPanel {
     public void setConfirmButton(MainMenu mainMenu){
         confirm.addActionListener(e -> {
             try {
-                if(accountsList1.isSelectionEmpty()) {
-                    throw new Exception("Please choose sender account!");
-                }
-                if(accountsList2.isSelectionEmpty()) {
-                    throw new Exception("Please choose receiver account!");
-                }
+                    if(accountsList1.isSelectionEmpty()) {
+                        throw new Exception("Please choose sender account!");
+                    }
+                    if(accountsList2.isSelectionEmpty()) {
+                        throw new Exception("Please choose receiver account!");
+                    }
+
+
                 int selectedSenderAccountId = Integer.parseInt(String.valueOf(accountsList1.getSelectedValue()));
                 int selectedReceiverAccountId = Integer.parseInt(String.valueOf(accountsList2.getSelectedValue()));
-
-                System.out.println(selectedSenderAccountId);
-                System.out.println(selectedReceiverAccountId);
                 double amount = Double.parseDouble(amountText.getText());
 
 
