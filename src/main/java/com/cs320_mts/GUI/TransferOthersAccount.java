@@ -15,10 +15,10 @@ public class TransferOthersAccount extends JPanel {
     private final JList accountsList;
     private final JLabel accountID;
     private final JLabel amount;
-    private final JLabel name;
+    // private final JLabel name;
     private final JTextField accountIDText;
     private final JTextField amountText;
-    private final JTextField nameText;
+    // private final JTextField nameText;
     private final JButton confirm;
     private final JButton back;
     private final TransferOthersAccount currentPanel;
@@ -30,10 +30,10 @@ public class TransferOthersAccount extends JPanel {
         accountSender   = new JLabel("Choose Sender Account");
         accountID 		= new JLabel("Account ID");
         amount 			= new JLabel("Amount");
-        name 			= new JLabel("User Name");
+        // name 			= new JLabel("User Name");
         accountIDText	= new JTextField();
         amountText		= new JTextField();
-        nameText 		= new JTextField();
+        // nameText 		= new JTextField();
         confirm			= new JButton("Confirm");
         back			= new JButton("Back");
 
@@ -59,8 +59,8 @@ public class TransferOthersAccount extends JPanel {
         GridBagConstraints c2 = new GridBagConstraints();
         GridBagConstraints c3 = new GridBagConstraints();
         GridBagConstraints c4 = new GridBagConstraints();
-        GridBagConstraints c5 = new GridBagConstraints();
-        GridBagConstraints c6 = new GridBagConstraints();
+        //GridBagConstraints c5 = new GridBagConstraints();
+        //GridBagConstraints c6 = new GridBagConstraints();
         GridBagConstraints c7 = new GridBagConstraints();
         GridBagConstraints c8 = new GridBagConstraints();
         GridBagConstraints c9 = new GridBagConstraints();
@@ -72,8 +72,8 @@ public class TransferOthersAccount extends JPanel {
         c2.gridy = 3;
         c3.gridy = 4;
         c4.gridy = 5;
-        c5.gridy = 6;
-        c6.gridy = 7;
+        //c5.gridy = 6;
+        //c6.gridy = 7;
         c7.gridy = 8;
         c8.gridy = 9;
 
@@ -81,12 +81,12 @@ public class TransferOthersAccount extends JPanel {
         c2.ipadx = 220;
         c4.ipady = 20;
         c4.ipadx = 220;
-        c6.ipady = 20;
-        c6.ipadx = 240;
+        //c6.ipady = 20;
+        //c6.ipadx = 240;
 
         c1.insets = new Insets(20,0,0,0);
         c3.insets = new Insets(20,0,0,0);
-        c5.insets = new Insets(20,0,0,0);
+        // c5.insets = new Insets(20,0,0,0);
         c7.insets = new Insets(20,0,20,0);
 
         accountSender.setFont(new Font("Arial",Font.ITALIC,30));
@@ -95,8 +95,8 @@ public class TransferOthersAccount extends JPanel {
         accountIDText.setFont(new Font("Arial",Font.ITALIC,30));
         amount.setFont(new Font("Arial",Font.ITALIC,30));
         amountText.setFont(new Font("Arial",Font.ITALIC,30));
-        name.setFont(new Font("Arial", Font.ITALIC ,30));
-        nameText.setFont(new Font("Arial", Font.ITALIC ,30));
+       /* name.setFont(new Font("Arial", Font.ITALIC ,30));
+        nameText.setFont(new Font("Arial", Font.ITALIC ,30));*/
         confirm.setFont(new Font("Arial",Font.ITALIC,30));
         back.setFont(new Font("Arial",Font.ITALIC,30));
 
@@ -109,9 +109,9 @@ public class TransferOthersAccount extends JPanel {
         this.add(amount,c3);
         this.add(amountText,c4);
         amountText.setHorizontalAlignment(JTextField.CENTER);
-        this.add(name,c5);
+     /*   this.add(name,c5);
         this.add(nameText,c6);
-        nameText.setHorizontalAlignment(JTextField.CENTER);
+        nameText.setHorizontalAlignment(JTextField.CENTER);*/
         this.add(confirm,c7);
         this.add(back,c8);
     }
@@ -119,16 +119,28 @@ public class TransferOthersAccount extends JPanel {
     //MONEY TRANSFER NEEDS TO BE DONE !!!
     public void setConfirmButton(MainMenu backPanel){
         confirm.addActionListener(e -> {
-            int selectedSenderAccountId = parseInt(accountsList.getSelectedValue().toString());
-            int amountToSend = parseInt(amountText.getText());
-            int receiverAccountId = parseInt(accountIDText.getText());
+            try {
+                if(accountsList.isSelectionEmpty()) {
+                    throw new Exception("Please choose sender account!");
+                }
+                int selectedSenderAccountId = parseInt(accountsList.getSelectedValue().toString());
+                int amountToSend = parseInt(amountText.getText());
+                int receiverAccountId = parseInt(accountIDText.getText());
 
-            //DATABASE ACTION
-            //Transaction transaction = new Transaction(amountToSend,receiverAccountId);
-            // accountService.moneyTransfer(selectedSenderAccountId,transaction); //AccountService accountService; must be initialized
+                //DATABASE ACTION
+                //Transaction transaction = new Transaction(amountToSend,receiverAccountId);
+                // accountService.moneyTransfer(selectedSenderAccountId,transaction); //AccountService accountService; must be initialized
 
-            backPanel.setVisible(true);
-            currentPanel.setVisible(false);
+                backPanel.setVisible(true);
+                currentPanel.setVisible(false);
+            }catch (NumberFormatException es1){
+                JOptionPane.showMessageDialog(new JFrame(), "Amount and Receiver Account Id must be valid! ", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            catch(Exception es2){
+                JOptionPane.showMessageDialog(new JFrame(),es2.getMessage()  , "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 
