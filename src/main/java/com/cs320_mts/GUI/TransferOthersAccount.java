@@ -7,6 +7,8 @@ import java.awt.*;
 
 public class TransferOthersAccount extends JPanel {
     private User user;
+    private final JLabel accountSender;
+    private final JList accountsList;
     private final JLabel accountID;
     private final JLabel amount;
     private final JLabel name;
@@ -21,6 +23,7 @@ public class TransferOthersAccount extends JPanel {
     public TransferOthersAccount(Dimension size){
         currentPanel = this;
 
+        accountSender   = new JLabel("Choose Sender Account");
         accountID 		= new JLabel("Account ID");
         amount 			= new JLabel("Amount");
         name 			= new JLabel("User Name");
@@ -29,6 +32,11 @@ public class TransferOthersAccount extends JPanel {
         nameText 		= new JTextField();
         confirm			= new JButton("Confirm");
         back			= new JButton("Back");
+
+        // ************ DATABASE ACTION NECESSARY ************
+        accountsList    = new JList(); // Add accounts to List, add id of account for each
+        // DATABASE ACTION HERE
+        // **********************************************************************
 
         //LAYOUT
         this.setLayout(new GridBagLayout());
@@ -40,15 +48,19 @@ public class TransferOthersAccount extends JPanel {
         GridBagConstraints c6 = new GridBagConstraints();
         GridBagConstraints c7 = new GridBagConstraints();
         GridBagConstraints c8 = new GridBagConstraints();
+        GridBagConstraints c9 = new GridBagConstraints();
+        GridBagConstraints c10 = new GridBagConstraints();
 
-        c1.gridy = 0;
-        c2.gridy = 1;
-        c3.gridy = 2;
-        c4.gridy = 3;
-        c5.gridy = 4;
-        c6.gridy = 5;
-        c7.gridy = 6;
-        c8.gridy = 7;
+        c9.gridy = 0;
+        c10.gridy = 1;
+        c1.gridy = 2;
+        c2.gridy = 3;
+        c3.gridy = 4;
+        c4.gridy = 5;
+        c5.gridy = 6;
+        c6.gridy = 7;
+        c7.gridy = 8;
+        c8.gridy = 9;
 
         c2.ipady = 20;
         c2.ipadx = 180;
@@ -57,6 +69,8 @@ public class TransferOthersAccount extends JPanel {
         c6.ipady = 20;
         c6.ipadx = 180;
 
+        accountSender.setFont(new Font("Arial",Font.BOLD,20));
+        accountsList.setFont(new Font("Arial",Font.BOLD,20));
         accountID.setFont(new Font("Arial",Font.BOLD,20));
         accountIDText.setFont(new Font("Arial",Font.BOLD,20));
         amount.setFont(new Font("Arial",Font.BOLD,20));
@@ -67,6 +81,8 @@ public class TransferOthersAccount extends JPanel {
         back.setFont(new Font("Arial",Font.BOLD,20));
 
         this.setSize(size);
+        this.add(accountSender,c9);
+        this.add(accountsList,c10);
         this.add(accountID,c1);
         this.add(accountIDText,c2);
         this.add(amount,c3);
