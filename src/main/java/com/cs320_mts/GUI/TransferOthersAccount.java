@@ -43,11 +43,13 @@ public class TransferOthersAccount extends JPanel {
 
         // ************ DATABASE ACTION NECESSARY ************
         // accountsList    = new JList(); // Add accounts to List, add id of account for each
-        listModel.addElement("AccountId1");
-        listModel.addElement("AccountId2");
-        listModel.addElement("AccountId3");
+        //listModel.addElement("AccountId");
+        //EXAMPLES: (DELETE AFTER IMPL.)!!!
+        listModel.addElement("5454");
+        listModel.addElement("5959");
+        listModel.addElement("3434");
         accountsList    = new JList(listModel);
-        // DATABASE ACTION HERE //ADD ACCOUNTS WITH user.getAccounts().toString();
+        // DATABASE ACTION HERE //ADD ACCOUNTS WITH user.getAccounts().get().getAccountId();
         // **********************************************************************
 
 
