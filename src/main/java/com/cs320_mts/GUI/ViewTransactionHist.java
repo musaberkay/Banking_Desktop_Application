@@ -36,7 +36,7 @@ public class ViewTransactionHist extends JPanel {
             currentPanel.setVisible(false);
         });
     }
-    public void setUserId(User user){
+    public void setUser(User user){
         user = user;
     }
 }

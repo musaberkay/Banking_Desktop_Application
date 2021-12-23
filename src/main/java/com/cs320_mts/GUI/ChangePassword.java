@@ -84,7 +84,7 @@ public class ChangePassword  extends JPanel {
         });
     }
 
-    public void setUserId(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

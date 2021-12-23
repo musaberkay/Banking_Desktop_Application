@@ -52,7 +52,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setCheckBalance(CheckBalance nextPanel){
         checkBalance.addActionListener(e -> {
-            nextPanel.setUserId(user);
+            nextPanel.setUser(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -61,7 +61,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setTransferOwnAccount(TransferOwnAccount nextPanel){
         transferOwnAccount.addActionListener(e -> {
-            nextPanel.setUserId(user);
+            nextPanel.setUser(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -70,7 +70,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setTransferOthersAccount(TransferOthersAccount nextPanel){
         transferOthersAccount.addActionListener(e -> {
-            nextPanel.setUserId(user);
+            nextPanel.setUser(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -79,7 +79,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setViewTransactionHist(ViewTransactionHist nextPanel){
         viewTransactionHistory.addActionListener(e -> {
-            nextPanel.setUserId(user);
+            nextPanel.setUser(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -88,7 +88,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setChangePassword(ChangePassword nextPanel){
         changePassword.addActionListener(e -> {
-            nextPanel.setUserId(user);
+            nextPanel.setUser(user);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -101,7 +101,7 @@ public class MainMenu extends JPanel {
         });
     }
 
-    public void setUserId(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

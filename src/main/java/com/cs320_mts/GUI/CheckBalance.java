@@ -42,7 +42,7 @@ public class CheckBalance extends JPanel {
         });
     }
 
-    public void setUserId(User userId) {
+    public void setUser(User user) {
         this.user = user;
     }
 }
