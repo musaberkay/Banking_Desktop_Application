@@ -33,7 +33,7 @@ public class User {
     @Column(length = 11, nullable = false)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Account> accounts = new ArrayList<>();
 
     public User(){};
