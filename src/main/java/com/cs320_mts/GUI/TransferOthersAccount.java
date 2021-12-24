@@ -5,6 +5,7 @@ import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
 import com.cs320_mts.service.AccountService;
 
+import com.cs320_mts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,11 @@ public class TransferOthersAccount extends JPanel {
 	
 	@Autowired
 	AccountService accountService;
+
+    @Autowired
+    UserServiceImpl userService;
 	
-    private User user;
+    private int userId;
     private final JLabel accountSender;
     private final JList accountsList;
     private final JLabel accountID;
@@ -53,7 +57,7 @@ public class TransferOthersAccount extends JPanel {
 
         // ************ DATABASE ACTION NECESSARY ************
         accountsList    = new JList(listModel);
-        List<Account> accounts = user.getAccounts();
+        List<Account> accounts = userService.getById(userId).getAccounts();
         for(Account account : accounts) {
        	 listModel.addElement(account.getAccountId());
         }
@@ -166,7 +170,7 @@ public class TransferOthersAccount extends JPanel {
         });
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int user) {
+        this.userId = userId;
     }
 }
