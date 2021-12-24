@@ -36,7 +36,7 @@ public class Account {
     }
 
     public void setAccountId(int accountId) {
-        accountId = accountId;
+        this.accountId = accountId;
     }
 
     public double getBalance() {
