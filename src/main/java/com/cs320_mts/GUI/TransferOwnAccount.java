@@ -20,7 +20,7 @@ public class TransferOwnAccount extends JPanel {
 	@Autowired
     AccountService accountService;
 	
-    private User user = Login.user;
+    private User user;
     private final JLabel accountSender;
     private final JLabel accountReceiver;
     private final JLabel amount;
@@ -132,7 +132,6 @@ public class TransferOwnAccount extends JPanel {
 
 
                 // ************ DON'T TOUCH ************
-                mainMenu.setUser(user);
                 mainMenu.setVisible(true);
                 currentPanel.setVisible(false);
             }catch (NumberFormatException es1){

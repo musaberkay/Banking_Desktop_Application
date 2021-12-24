@@ -259,7 +259,4 @@ public class Register extends JPanel {
             currentPanel.setVisible(false);
         });
     }
-    public void setUser(User user){
-        user = user;
-    }
 }

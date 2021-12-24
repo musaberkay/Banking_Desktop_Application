@@ -76,6 +76,6 @@ public class ViewTransactionHist extends JPanel {
         });
     }
     public void setUser(User user){
-        user = user;
+        this.user = user;
     }
 }
