@@ -33,10 +33,11 @@ public class ViewTransactionHist extends JPanel {
     	removeAll();
     	currentPanel    = this;
 
+        // ************ GUI ACTION NECESSARY ************
+    	// GUI ACTION IS NEEDED TO CREATE TABLES FOR EACH ACCOUNT OF THE USER
         String[] columns        = {"Transaction Id","Date","Amount","Sender Account","Receiver Account"};
         DefaultTableModel model = new DefaultTableModel(columns,0);
         transactions            = new JTable(model);
-
         // ************ DON'T TOUCH ************
         model.addRow(new String[]{"Transaction Id","Date","Amount","Sender Account","Receiver Account"});
         // ************ DON'T TOUCH ************
