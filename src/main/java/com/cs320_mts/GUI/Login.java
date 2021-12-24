@@ -10,7 +10,7 @@ import java.awt.*;
 
 @Component
 public class Login extends JPanel {
-    private User user;
+    public static User user = new User();
     private final JLabel identificationNumber;
     private final JLabel password;
     private final JTextField identificationNumberText;
@@ -130,4 +130,5 @@ public class Login extends JPanel {
             currentPanel.setVisible(false);
         });
     }
+
 }
