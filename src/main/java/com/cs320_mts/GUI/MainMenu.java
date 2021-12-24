@@ -54,7 +54,21 @@ public class MainMenu extends JPanel {
     public void setCreateAccount(){
         createAccount.addActionListener(e -> {
         //DATABASE ACTIONS HERE
-
+        	try {
+                if(user.getAccounts().size()==3) {
+                	throw new Exception("You already have 3 accounts, please contact with Customer Services to create a new account.");
+                }
+                else {
+                	Account account = new Account();
+                	account.setUser(user);
+                	account.setBalance(0);   // NOW DEFAULT, SHOULD BE DESIGNED
+                	user.getAccounts().add(account);
+                	userService.save(user);
+                	JOptionPane.showMessageDialog(new JFrame(), "Account is created succesfully!", "Succes", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception ex){
+                JOptionPane.showMessageDialog(new JFrame(), ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
     }
 
