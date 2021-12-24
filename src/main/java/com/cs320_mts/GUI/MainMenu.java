@@ -1,14 +1,24 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.Account;
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.AccountService;
+import com.cs320_mts.service.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 @Component
 public class MainMenu extends JPanel {
-    private User user;
+	
+	@Autowired
+	AccountService accountService;
+	
+    private User user = new User();
     private final JButton createAccount;
     private final JButton checkBalance;
     private final JButton transferOwnAccount;
@@ -49,22 +59,24 @@ public class MainMenu extends JPanel {
         this.add(changePassword);
         this.add(exit);
     }
-    //  ************ DATABASE ACTION NECESSARY ************
-    //new account must be added to DB
+    
     public void setCreateAccount(){
         createAccount.addActionListener(e -> {
-        //DATABASE ACTIONS HERE
+        	//DATABASE ACTIONS HERE
         	try {
                 if(user.getAccounts().size()==3) {
-                	throw new Exception("You already have 3 accounts, please contact with Customer Services to create a new account.");
+                	throw new Exception("You have 3 accounts, plase contact with Customer Services to create a new account.");
                 }
                 else {
-                	Account account = new Account();
-                	account.setUser(user);
-                	account.setBalance(0);   // NOW DEFAULT, SHOULD BE DESIGNED
-                	user.getAccounts().add(account);
-                	userService.save(user);
-                	JOptionPane.showMessageDialog(new JFrame(), "Account is created succesfully!", "Succes", JOptionPane.INFORMATION_MESSAGE);
+                	int dialogResult = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to create an account?", "Question", JOptionPane.YES_NO_OPTION);
+                    if (dialogResult == JOptionPane.YES_OPTION) {
+	                	Account account = new Account();
+	                	account.setUser(user);
+	                	account.setBalance(0);  // NOW DEFAULT, WILL BE DESIGNED
+	                	user.getAccounts().add(account);
+	                	accountService.save(account);
+	                	JOptionPane.showMessageDialog(new JFrame(), "Account is created succesfully!", "Succes", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             } catch (Exception ex){
                 JOptionPane.showMessageDialog(new JFrame(), ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
