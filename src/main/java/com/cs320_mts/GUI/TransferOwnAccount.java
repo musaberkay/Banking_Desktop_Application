@@ -7,6 +7,8 @@ import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
 import com.cs320_mts.service.AccountService;
 
+import com.cs320_mts.service.AccountServiceImpl;
+import com.cs320_mts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +21,11 @@ public class TransferOwnAccount extends JPanel {
 	
 	@Autowired
     AccountService accountService;
+
+    @Autowired
+    UserServiceImpl userService;
 	
-    private User user;
+    private int userId;
     private final JLabel accountSender;
     private final JLabel accountReceiver;
     private final JLabel amount;
@@ -30,6 +35,8 @@ public class TransferOwnAccount extends JPanel {
     private final JButton confirm;
     private final JButton back;
     private final TransferOwnAccount currentPanel;
+
+
 
     public TransferOwnAccount(){
         currentPanel            = this;
@@ -43,7 +50,7 @@ public class TransferOwnAccount extends JPanel {
 
         // ************ MODEL ACTION NECESSARY ************
         
-        List<Account> accounts = user.getAccounts();
+        List<Account> accounts = userService.getById(userId).getAccounts();
         for(Account account : accounts) {
         	listModel.addElement(account.getAccountId());
         }
@@ -152,8 +159,8 @@ public class TransferOwnAccount extends JPanel {
             currentPanel.setVisible(false);
         });
     }
-    public void setUser(User user){
-        this.user = user;
+    public void setUserId(int userId){
+        this.userId = userId;
     }
 
 }
