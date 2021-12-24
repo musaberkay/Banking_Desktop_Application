@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService
 {
-    public User save(User user);
+    public User save(User user) throws Exception;
     public List<User> getAll();
     public User getById(int id);
     public void deleteById(int id);

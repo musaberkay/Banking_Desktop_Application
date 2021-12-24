@@ -22,8 +22,7 @@ public class TestUserService
      * This method should be run in order to initialize the DB and work with it for testing purposes.
      */
     @Test
-    public void testCreateUser()
-    {
+    public void testCreateUser() throws Exception {
 
         // Creation of first User
         User user = new User("Kerem","Ersan",123456,"07-04-2000","35007269396","kerem.ersan@ozu.edu.tr","5057656825");
@@ -42,7 +41,7 @@ public class TestUserService
         userService.save(user);
 
         // Creation of second User
-        User user2 = new User("Zuhal","Tokgözoğlu",973100,"05-06-1998","24107854293","zuhaltokgoz@gmail.com.tr","5511768127");
+        User user2 = new User("Zuhal","Karabas",973100,"05-06-1998","24107854293","zuhaltokgoz@gmail.com.tr","5511768127");
 
         // Creation of second User's first account
         Account account3 = new Account(1575,user2);
@@ -71,21 +70,20 @@ public class TestUserService
      * This method should be run as a second test. Because we need initial rows on DB.
      */
     @Test
-    public void testCreateTransaction()
-    {
+    public void testCreateTransaction() throws Exception {
         // creates transaction object.
         Transaction transaction = new Transaction(30,102);
 
         // retrieves the sender account. In this test, it is X.
         Account senderAccount = accountService.getById(105);
+
         if(accountService.moneyTransfer(senderAccount.getAccountId(),transaction))
         {
             System.out.println("Money Transfer has been made successfully");
 
         }else{
-            System.out.println("Money Transfer is failed.");
+            throw new Exception("Money Transfer is failed.");
         }
-
 
 
     }
