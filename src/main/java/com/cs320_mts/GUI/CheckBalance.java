@@ -2,6 +2,8 @@ package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.Account;
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -13,11 +15,13 @@ import java.util.List;
 
 @Component
 public class CheckBalance extends JPanel {
-    private User user;
+    private int userId;
     private final JButton back;
     private final JTable table;
-
     private final CheckBalance currentPanel;
+
+    @Autowired
+    UserServiceImpl userService;
 
     public CheckBalance(){
         currentPanel = this;
@@ -31,7 +35,7 @@ public class CheckBalance extends JPanel {
         //DO NOT TOUCH ABOVE, IF IT'S POSSIBLE
 
         // ************ DATABASE ACTION NECESSARY ************
-        List<Account> accounts = user.getAccounts();
+        List<Account> accounts = userService.getById(userId).getAccounts();
         for(Account account : accounts) {
         	String accountId = String.valueOf(account.getAccountId());
         	String balance = String.valueOf(account.getBalance());
@@ -72,7 +76,7 @@ public class CheckBalance extends JPanel {
         });
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }
