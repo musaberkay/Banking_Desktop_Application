@@ -10,7 +10,7 @@ import java.awt.*;
 
 @Component
 public class ViewTransactionHist extends JPanel {
-    private User user;
+    private int userId;
     private final JButton back;
     private final JTable transactions;
     private final ViewTransactionHist currentPanel;
@@ -75,7 +75,7 @@ public class ViewTransactionHist extends JPanel {
             currentPanel.setVisible(false);
         });
     }
-    public void setUser(User user){
-        this.user = user;
+    public void setUserId(int userId){
+        this.userId = userId;
     }
 }
