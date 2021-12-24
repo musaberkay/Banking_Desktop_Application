@@ -1,7 +1,6 @@
 package com.cs320_mts.GUI;
 
-import com.cs320_mts.model.User;
-import com.cs320_mts.service.UserServiceImpl;
+import com.cs320_mts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,7 @@ public class Login extends JPanel {
     private final JLabel space;
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 
     public Login(){
         currentPanel = this;

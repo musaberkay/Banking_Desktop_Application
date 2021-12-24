@@ -2,13 +2,13 @@ package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.Account;
 import com.cs320_mts.model.Transaction;
-import com.cs320_mts.model.User;
 import com.cs320_mts.service.AccountService;
 
-import com.cs320_mts.service.UserServiceImpl;
+import com.cs320_mts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -22,7 +22,7 @@ public class TransferOthersAccount extends JPanel {
 	AccountService accountService;
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 	
     private int userId;
     private final JLabel accountSender;
@@ -120,11 +120,15 @@ public class TransferOthersAccount extends JPanel {
         this.add(amount,c3);
         this.add(amountText,c4);
         amountText.setHorizontalAlignment(JTextField.CENTER);
-     /*   this.add(name,c5);
+     /* this.add(name,c5);
         this.add(nameText,c6);
         nameText.setHorizontalAlignment(JTextField.CENTER);*/
         this.add(confirm,c7);
         this.add(back,c8);
+    }
+
+    public void setTransferOthersGUI(MainMenu mainMenu){
+
     }
 
     //MONEY TRANSFER NEEDS TO BE DONE !!!

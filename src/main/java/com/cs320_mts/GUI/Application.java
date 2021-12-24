@@ -26,7 +26,6 @@ public class Application extends JFrame {
     @Autowired
     private Login                   login;
 
-
     public void init(){
 
         this.setTitle("Money Transfer System");
