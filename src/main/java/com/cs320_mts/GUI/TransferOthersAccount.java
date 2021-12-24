@@ -1,15 +1,25 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.Account;
+import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.AccountService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
 @Component
 public class TransferOthersAccount extends JPanel {
+	
+	@Autowired
+	AccountService accountService;
+	
     private User user;
     private final JLabel accountSender;
     private final JList accountsList;
@@ -42,13 +52,12 @@ public class TransferOthersAccount extends JPanel {
         listModel = new DefaultListModel();
 
         // ************ DATABASE ACTION NECESSARY ************
-        // accountsList    = new JList(); // Add accounts to List, add id of account for each
-        //listModel.addElement("AccountId");
-        //EXAMPLES: (DELETE AFTER IMPL.)!!!
-        listModel.addElement("5454");
-        listModel.addElement("5959");
-        listModel.addElement("3434");
+        
         accountsList    = new JList(listModel);
+        List<Account> accounts = user.getAccounts();
+        for(Account account : accounts) {
+       	 listModel.addElement(account.getAccountId());
+        }
         // DATABASE ACTION HERE //ADD ACCOUNTS WITH user.getAccounts().get().getAccountId();
         // **********************************************************************
 
@@ -123,12 +132,14 @@ public class TransferOthersAccount extends JPanel {
                         throw new Exception("Please choose sender account!");
                     }
                 int selectedSenderAccountId = parseInt(accountsList.getSelectedValue().toString());
-                int amountToSend = parseInt(amountText.getText());
+                int amount = parseInt(amountText.getText());
                 int receiverAccountId = parseInt(accountIDText.getText());
 
                 //DATABASE ACTION
-                //Transaction transaction = new Transaction(amountToSend,receiverAccountId);
-                // accountService.moneyTransfer(selectedSenderAccountId,transaction); //AccountService accountService; must be initialized
+                Transaction transaction = new Transaction();
+                transaction.setReceiverAccId(receiverAccountId);
+                transaction.setAmount(amount);
+                accountService.moneyTransfer(selectedSenderAccountId, transaction);
 
                 backPanel.setVisible(true);
                 currentPanel.setVisible(false);
@@ -155,4 +166,3 @@ public class TransferOthersAccount extends JPanel {
         this.user = user;
     }
 }
-
