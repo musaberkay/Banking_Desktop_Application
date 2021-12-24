@@ -7,10 +7,12 @@ import java.awt.*;
 
 @Component
 public class Welcome extends JPanel {
-    private final JButton login;
-    private final JButton register;
-    private final Welcome currentPanel;
-    public Welcome(){
+	
+    private JButton login;
+    private JButton register;
+    private Welcome currentPanel;
+    
+    public Welcome() {
         currentPanel = this;
         login        = new JButton("Login");
         register     = new JButton("Register");

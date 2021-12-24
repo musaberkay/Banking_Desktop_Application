@@ -1,8 +1,8 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.Account;
-import com.cs320_mts.model.User;
-import com.cs320_mts.service.UserServiceImpl;
+import com.cs320_mts.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,34 +15,31 @@ import java.util.List;
 
 @Component
 public class CheckBalance extends JPanel {
+	
+	@Autowired
+    UserService userService;
+	
     private int userId;
-    private final JButton back;
-    private final JTable table;
-    private final CheckBalance currentPanel;
+    private JButton back;
+    private JTable table;
+    private CheckBalance currentPanel;
+    
+    public CheckBalance() {}
 
-    @Autowired
-    UserServiceImpl userService;
-
-    public CheckBalance(){
-        currentPanel = this;
-
-        back  = new JButton("Back");
+    public void setCheckBalancePanel() {
+    	this.removeAll();
+    	currentPanel = this;
 
         String[] columns        = {"Account ID", "Balance"};
         DefaultTableModel model = new DefaultTableModel(columns,0);
         table                   = new JTable(model);
         model.addRow(new String[]{"Account Id","Balance"});
-        //DO NOT TOUCH ABOVE, IF IT'S POSSIBLE
-
-        // ************ DATABASE ACTION NECESSARY ************
         List<Account> accounts = userService.getById(userId).getAccounts();
         for(Account account : accounts) {
         	String accountId = String.valueOf(account.getAccountId());
         	String balance = String.valueOf(account.getBalance());
         	model.addRow(new String[] {accountId, balance});
         }
-        // **********************************************************************
-
 
         //LAYOUT __ DO NOT TOUCH
         this.setLayout(new GridBagLayout());
@@ -65,11 +62,11 @@ public class CheckBalance extends JPanel {
         table.setDefaultRenderer(String.class, centerRenderer);
         table.setDefaultEditor(Object.class, null);
         back.setFont(new Font("Arial",Font.BOLD,20));
-
     }
-
+    
     // DO NOT TOUCH THIS METHOD
     public void setBackButton(MainMenu backPanel){
+    	back = new JButton("Back");
         back.addActionListener(e -> {
             backPanel.setVisible(true);
             currentPanel.setVisible(false);

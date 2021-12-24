@@ -1,17 +1,14 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.Account;
-import com.cs320_mts.model.User;
 import com.cs320_mts.service.AccountService;
 import com.cs320_mts.service.UserService;
 
-import com.cs320_mts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
 @Component
 public class MainMenu extends JPanel {
@@ -20,21 +17,18 @@ public class MainMenu extends JPanel {
 	AccountService accountService;
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 	
     private int userId;
-    private final JButton createAccount;
-    private final JButton checkBalance;
-    private final JButton transferOwnAccount;
-    private final JButton transferOthersAccount;
-    private final JButton viewTransactionHistory;
-    private final JButton changePassword;
-    private final JButton exit;
-
-    private final MainMenu currentPanel;
-
-
-
+    private JButton createAccount;
+    private JButton checkBalance;
+    private JButton transferOwnAccount;
+    private JButton transferOthersAccount;
+    private JButton viewTransactionHistory;
+    private JButton changePassword;
+    private JButton exit;
+    private MainMenu currentPanel;
+    
     public MainMenu() {
         currentPanel = this;
 
@@ -74,7 +68,8 @@ public class MainMenu extends JPanel {
                 	throw new Exception("You have 3 accounts, plase contact with Customer Services to create a new account.");
                 }
                 else {
-                	int dialogResult = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to create an account?", "Question", JOptionPane.YES_NO_OPTION);
+                	int dialogResult = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to create an account?", "Question",
+                			JOptionPane.YES_NO_OPTION);
                     if (dialogResult == JOptionPane.YES_OPTION) {
 	                	Account account = new Account();
 	                	account.setUser(userService.getById(userId));
@@ -94,6 +89,7 @@ public class MainMenu extends JPanel {
     public void setCheckBalance(CheckBalance nextPanel){
         checkBalance.addActionListener(e -> {
             nextPanel.setUserId(userId);
+            nextPanel.setCheckBalancePanel();
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -103,6 +99,7 @@ public class MainMenu extends JPanel {
     public void setTransferOwnAccount(TransferOwnAccount nextPanel){
         transferOwnAccount.addActionListener(e -> {
             nextPanel.setUserId(userId);
+            nextPanel.setTransferOwnAccount();
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -112,6 +109,7 @@ public class MainMenu extends JPanel {
     public void setTransferOthersAccount(TransferOthersAccount nextPanel){
         transferOthersAccount.addActionListener(e -> {
             nextPanel.setUserId(userId);
+            nextPanel.setTransferOthersAccount();  /////
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -121,6 +119,7 @@ public class MainMenu extends JPanel {
     public void setViewTransactionHist(ViewTransactionHist nextPanel){
         viewTransactionHistory.addActionListener(e -> {
             nextPanel.setUserId(userId);
+            nextPanel.setViewTransactionHist();
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });

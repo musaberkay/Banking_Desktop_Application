@@ -9,20 +9,21 @@ import java.awt.*;
 
 @Component
 public class Login extends JPanel {
-    private int userId;
-    private final JLabel identificationNumber;
-    private final JLabel password;
-    private final JTextField identificationNumberText;
-    private final JPasswordField passwordText;
-    private final JButton login;
-    private final JButton back;
-    private final Login currentPanel;
-    private final JLabel space;
-
-    @Autowired
+	
+	@Autowired
     UserService userService;
+	
+    private int userId;
+    private JLabel identificationNumber;
+    private JLabel password;
+    private JTextField identificationNumberText;
+    private JPasswordField passwordText;
+    private JButton login;
+    private JButton back;
+    private Login currentPanel;
+    private JLabel space;
 
-    public Login(){
+    public Login() {
         currentPanel = this;
 
         identificationNumber 		= new JLabel("Identification Number");

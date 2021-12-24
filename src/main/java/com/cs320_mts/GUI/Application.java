@@ -26,6 +26,7 @@ public class Application extends JFrame {
     @Autowired
     private Login                   login;
 
+
     public void init(){
 
         this.setTitle("Money Transfer System");
@@ -64,8 +65,8 @@ public class Application extends JFrame {
         this.add(welcome);
         this.add(changePassword);
         this.add(transferOwn);
-        this.add(login);
-
+        this.add(login);       
+        
         // set transitions
         welcome.setLoginButton(login);
         welcome.setRegisterButton(register);
@@ -73,6 +74,13 @@ public class Application extends JFrame {
         register.setBackButton(welcome);
         login.setLoginButton(mainMenu);
         login.setBackButton(welcome);
+        mainMenu.setCreateAccount();
+        mainMenu.setCheckBalance(checkBalance);
+        mainMenu.setTransferOwnAccount(transferOwn);
+        mainMenu.setTransferOthersAccount(transferOthers);
+        mainMenu.setViewTransactionHist(viewTransaction);
+        mainMenu.setChangePassword(changePassword);
+        mainMenu.setExit();
         transferOthers.setConfirmButton(mainMenu);
         transferOthers.setBackButton(mainMenu);
         checkBalance.setBackButton(mainMenu);
@@ -81,13 +89,7 @@ public class Application extends JFrame {
         viewTransaction.setBackButton(mainMenu);
         transferOwn.setConfirmButton(mainMenu);
         transferOwn.setBackButton(mainMenu);
-        mainMenu.setCreateAccount();
-        mainMenu.setCheckBalance(checkBalance);
-        mainMenu.setTransferOwnAccount(transferOwn);
-        mainMenu.setTransferOthersAccount(transferOthers);
-        mainMenu.setViewTransactionHist(viewTransaction);
-        mainMenu.setChangePassword(changePassword);
-        mainMenu.setExit();
+        
         this.setVisible(true);
 
 

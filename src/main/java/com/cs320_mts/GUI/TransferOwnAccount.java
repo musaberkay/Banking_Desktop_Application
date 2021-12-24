@@ -1,13 +1,9 @@
 package com.cs320_mts.GUI;
 
-import ch.qos.logback.core.joran.spi.ActionException;
-
 import com.cs320_mts.model.Account;
 import com.cs320_mts.model.Transaction;
-import com.cs320_mts.model.User;
 import com.cs320_mts.service.AccountService;
-
-import com.cs320_mts.service.AccountServiceImpl;
+import com.cs320_mts.service.UserService;
 import com.cs320_mts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,32 +19,30 @@ public class TransferOwnAccount extends JPanel {
     AccountService accountService;
 
     @Autowired
-    UserServiceImpl userService;
+    UserService userService;
 	
     private int userId;
-    private final JLabel accountSender;
-    private final JLabel accountReceiver;
-    private final JLabel amount;
-    private final JList accountsList1;
-    private final JList accountsList2;
-    private final JTextField amountText;
-    private final JButton confirm;
-    private final JButton back;
-    private final TransferOwnAccount currentPanel;
+    private JLabel accountSender;
+    private JLabel accountReceiver;
+    private JLabel amount;
+    private JList accountsList1;
+    private JList accountsList2;
+    private JTextField amountText;
+    private JButton confirm;
+    private JButton back;
+    private TransferOwnAccount currentPanel;
 
-
-
-    public TransferOwnAccount(){
-        currentPanel            = this;
+    public TransferOwnAccount(){}
+    
+    public void setTransferOwnAccount() {
+    	this.removeAll();
+    	currentPanel            = this;
         accountSender           = new JLabel("Choose Sender Account");
         accountReceiver         = new JLabel("Choose Receiver Account");
         amount                  = new JLabel("Amount");
-
+        amountText      = new JTextField();
         DefaultListModel listModel;
         listModel = new DefaultListModel();
-
-
-        // ************ MODEL ACTION NECESSARY ************
         
         List<Account> accounts = userService.getById(userId).getAccounts();
         for(Account account : accounts) {
@@ -56,16 +50,10 @@ public class TransferOwnAccount extends JPanel {
         }
         accountsList1   = new JList(listModel);
         accountsList2   = new JList(listModel);
-        
-        // ADD ACCOUNTS WITH USING USER OBJECT
-        // MODEL ACTION HERE
-        // **********************************************************************
 
 
         // ************ DON'T TOUCH ************
-        amountText      = new JTextField();
-        confirm         = new JButton("Confirm");
-        back            = new JButton("Back");
+
 
         //LAYOUT
         this.setLayout(new GridBagLayout());
@@ -114,8 +102,10 @@ public class TransferOwnAccount extends JPanel {
         this.add(confirm,c5);
         this.add(back,c6);
     }
+    
     // ************ DATA HAS RECEIVED. DATABASE ACTION NECESSARY ************
     public void setConfirmButton(MainMenu mainMenu){
+    	confirm = new JButton("Confirm");
         confirm.addActionListener(e -> {
             try {
                     if(accountsList1.isSelectionEmpty()) {
@@ -154,13 +144,14 @@ public class TransferOwnAccount extends JPanel {
     }
     // ************ DON'T TOUCH ************
     public void setBackButton(MainMenu mainMenu){
+    	back = new JButton("Back");
         back.addActionListener(e -> {
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
         });
     }
+    
     public void setUserId(int userId){
         this.userId = userId;
     }
-
 }

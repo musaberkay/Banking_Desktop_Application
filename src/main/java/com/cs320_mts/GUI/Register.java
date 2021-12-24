@@ -11,23 +11,23 @@ import java.awt.*;
 @Component
 public class Register extends JPanel {
     private User user;
-    private final JLabel name;
-    private final JLabel surname;
-    private final JLabel password;
-    private final JLabel dateOfBirth;
-    private final JLabel identificationNumber;
-    private final JLabel email;
-    private final JLabel phoneNumber;
-    private final JTextField nameText;
-    private final JTextField surnameText;
-    private final JPasswordField passwordText;
-    private final JTextField dateOfBirthText;
-    private final JTextField identificationNumberText;
-    private final JTextField emailText;
-    private final JTextField phoneNumberText;
-    private final JButton register;
-    private final JButton back;
-    private final Register currentPanel;
+    private JLabel name;
+    private JLabel surname;
+    private JLabel password;
+    private JLabel dateOfBirth;
+    private JLabel identificationNumber;
+    private JLabel email;
+    private JLabel phoneNumber;
+    private JTextField nameText;
+    private JTextField surnameText;
+    private JPasswordField passwordText;
+    private JTextField dateOfBirthText;
+    private JTextField identificationNumberText;
+    private JTextField emailText;
+    private JTextField phoneNumberText;
+    private JButton register;
+    private JButton back;
+    private Register currentPanel;
 
     @Autowired
     UserService userService;
@@ -145,6 +145,7 @@ public class Register extends JPanel {
         this.add(register,c15);
         this.add(back,c16);
     }
+    
     // ************ DATA HAS RECEIVED. DATABASE ACTION NECESSARY ************
     public void setRegisterButton(MainMenu mainMenu){
         register.addActionListener(e -> {
@@ -162,8 +163,8 @@ public class Register extends JPanel {
             String userDateOfBirth  = dateOfBirthText.getText(); //  like 21-07-2000
 
 
-                if (userName.length() > 100 || userName.length() < 3)
-                    throw new Exception("Name must be between 3 and 100 characters");
+                if (userName.length() > 100 || userName.length() < 2)
+                    throw new Exception("Name must be between 2 and 100 characters");
 
                 for(int i = 0 ; i < userName.length(); i++){
                     if (!(userName.charAt(i) >= 'A' && userName.charAt(i) <= 'z'))
@@ -206,7 +207,7 @@ public class Register extends JPanel {
                 if(day > 31 || 1 > day)
                     throw new Exception("Not valid day");
 
-            // NEEDS TO BE CHECKED ON DATABASE, THEY ARE UNIQUE
+                
             String userIdentificationNumber     = identificationNumberText.getText();
             String userEmail                    = emailText.getText();
             String userPhoneNumber              = phoneNumberText.getText();

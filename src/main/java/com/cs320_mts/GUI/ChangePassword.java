@@ -1,6 +1,5 @@
 package com.cs320_mts.GUI;
 
-import com.cs320_mts.model.User;
 import com.cs320_mts.service.UserService;
 
 import javax.swing.*;
@@ -23,10 +22,9 @@ public class ChangePassword  extends JPanel {
     private JPasswordField newPasswordField;
     private JButton confirm;
     private JButton back;
+    private ChangePassword currentPanel;
 
-    private final ChangePassword currentPanel;
-
-    public ChangePassword(){
+    public ChangePassword() {
         currentPanel = this;
 
         oldPassword 			= new JLabel("Old Password");
@@ -80,37 +78,33 @@ public class ChangePassword  extends JPanel {
     }
 
     public void setConfirmButton(MainMenu backPanel){
-
-
         confirm.addActionListener(e -> {
-                    try{
-                        String oldPasswordText = String.valueOf(oldPasswordField.getPassword());
-                        String newPasswordText = String.valueOf(newPasswordField.getPassword());
+            try{
+                String oldPasswordText = String.valueOf(oldPasswordField.getPassword());
+                String newPasswordText = String.valueOf(newPasswordField.getPassword());
 
-                        if(oldPasswordText.length() != 6)
-                            throw new ArithmeticException("Old Password must be 6 digit number");
-                        int passwordInputOld = Integer.parseInt(oldPasswordText);
-                        if(newPasswordText.length() != 6)
-                            throw new ArithmeticException("New Password must be 6 digit number");
-                        int passwordInputNew = Integer.parseInt(newPasswordText);
+                if(oldPasswordText.length() != 6)
+                    throw new ArithmeticException("Old Password must be 6 digit number");
+                int passwordInputOld = Integer.parseInt(oldPasswordText);
+                if(newPasswordText.length() != 6)
+                    throw new ArithmeticException("New Password must be 6 digit number");
+                int passwordInputNew = Integer.parseInt(newPasswordText);
+                
+                userService.changePassword(userId, passwordInputOld, passwordInputNew);
+                JOptionPane.showMessageDialog(new JFrame(),"Password is successfully changed!" , "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+                
+                backPanel.setVisible(true);
+                currentPanel.setVisible(false);
+            }catch (NumberFormatException es){
+                JOptionPane.showMessageDialog(new JFrame(),"New password number must be digit" , "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }catch (Exception es){
+                JOptionPane.showMessageDialog(new JFrame(),es.getMessage() , "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
 
-
-                        //DATABASE Action
-                        userService.changePassword(userId, passwordInputOld, passwordInputNew);
-                        
-
-                        backPanel.setVisible(true);
-                        currentPanel.setVisible(false);
-                    }catch (NumberFormatException es){
-                        JOptionPane.showMessageDialog(new JFrame(),"New password number must be digit" , "Error",
-                                JOptionPane.ERROR_MESSAGE);
-                    }catch (Exception es){
-                        JOptionPane.showMessageDialog(new JFrame(),es.getMessage() , "Error",
-                                JOptionPane.ERROR_MESSAGE);
-                    }
-
-                }
-        );
+        });
     }
 
     // DO NOT TOUCH THIS METHOD

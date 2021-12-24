@@ -8,7 +8,6 @@ import com.cs320_mts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -25,45 +24,36 @@ public class TransferOthersAccount extends JPanel {
     UserService userService;
 	
     private int userId;
-    private final JLabel accountSender;
-    private final JList accountsList;
-    private final JLabel accountID;
-    private final JLabel amount;
-    // private final JLabel name;
-    private final JTextField accountIDText;
-    private final JTextField amountText;
-    // private final JTextField nameText;
-    private final JButton confirm;
-    private final JButton back;
-    private final TransferOthersAccount currentPanel;
+    private JLabel accountSender;
+    private JList accountsList;
+    private JLabel accountID;
+    private JLabel amount;
+    private JTextField accountIDText;
+    private JTextField amountText;
+    private JButton confirm;
+    private JButton back;
+    private TransferOthersAccount currentPanel;
 
+    public TransferOthersAccount(){}
 
-    public TransferOthersAccount(){
-        currentPanel = this;
+    public void setTransferOthersAccount(){
+    	removeAll();
+    	currentPanel = this;
 
         accountSender   = new JLabel("Choose Sender Account");
         accountID 		= new JLabel("Account ID");
         amount 			= new JLabel("Amount");
-        // name 			= new JLabel("User Name");
         accountIDText	= new JTextField();
         amountText		= new JTextField();
-        // nameText 		= new JTextField();
-        confirm			= new JButton("Confirm");
-        back			= new JButton("Back");
-
 
         DefaultListModel listModel;
         listModel = new DefaultListModel();
 
-        // ************ DATABASE ACTION NECESSARY ************
         accountsList    = new JList(listModel);
         List<Account> accounts = userService.getById(userId).getAccounts();
         for(Account account : accounts) {
        	 listModel.addElement(account.getAccountId());
         }
-        // DATABASE ACTION HERE //ADD ACCOUNTS WITH user.getAccounts().get().getAccountId();
-        // **********************************************************************
-
 
         //LAYOUT
         this.setLayout(new GridBagLayout());
@@ -71,8 +61,6 @@ public class TransferOthersAccount extends JPanel {
         GridBagConstraints c2 = new GridBagConstraints();
         GridBagConstraints c3 = new GridBagConstraints();
         GridBagConstraints c4 = new GridBagConstraints();
-        //GridBagConstraints c5 = new GridBagConstraints();
-        //GridBagConstraints c6 = new GridBagConstraints();
         GridBagConstraints c7 = new GridBagConstraints();
         GridBagConstraints c8 = new GridBagConstraints();
         GridBagConstraints c9 = new GridBagConstraints();
@@ -84,8 +72,6 @@ public class TransferOthersAccount extends JPanel {
         c2.gridy = 3;
         c3.gridy = 4;
         c4.gridy = 5;
-        //c5.gridy = 6;
-        //c6.gridy = 7;
         c7.gridy = 8;
         c8.gridy = 9;
 
@@ -93,12 +79,9 @@ public class TransferOthersAccount extends JPanel {
         c2.ipadx = 220;
         c4.ipady = 20;
         c4.ipadx = 220;
-        //c6.ipady = 20;
-        //c6.ipadx = 240;
 
         c1.insets = new Insets(20,0,0,0);
         c3.insets = new Insets(20,0,0,0);
-        // c5.insets = new Insets(20,0,0,0);
         c7.insets = new Insets(20,0,20,0);
 
         accountSender.setFont(new Font("Arial",Font.ITALIC,30));
@@ -107,8 +90,6 @@ public class TransferOthersAccount extends JPanel {
         accountIDText.setFont(new Font("Arial",Font.ITALIC,30));
         amount.setFont(new Font("Arial",Font.ITALIC,30));
         amountText.setFont(new Font("Arial",Font.ITALIC,30));
-       /* name.setFont(new Font("Arial", Font.ITALIC ,30));
-        nameText.setFont(new Font("Arial", Font.ITALIC ,30));*/
         confirm.setFont(new Font("Arial",Font.ITALIC,30));
         back.setFont(new Font("Arial",Font.ITALIC,30));
 
@@ -120,24 +101,18 @@ public class TransferOthersAccount extends JPanel {
         this.add(amount,c3);
         this.add(amountText,c4);
         amountText.setHorizontalAlignment(JTextField.CENTER);
-     /* this.add(name,c5);
-        this.add(nameText,c6);
-        nameText.setHorizontalAlignment(JTextField.CENTER);*/
         this.add(confirm,c7);
         this.add(back,c8);
     }
 
-    public void setTransferOthersGUI(MainMenu mainMenu){
-
-    }
-
     //MONEY TRANSFER NEEDS TO BE DONE !!!
     public void setConfirmButton(MainMenu backPanel){
+    	confirm = new JButton("Confirm");
         confirm.addActionListener(e -> {
             try {
-                    if(accountsList.isSelectionEmpty()) {
-                        throw new Exception("Please choose sender account!");
-                    }
+                if(accountsList.isSelectionEmpty()) {
+                    throw new Exception("Please choose sender account!");
+                }
                 int selectedSenderAccountId = parseInt(accountsList.getSelectedValue().toString());
                 int amount = parseInt(amountText.getText());
                 int receiverAccountId = parseInt(accountIDText.getText());
@@ -151,15 +126,12 @@ public class TransferOthersAccount extends JPanel {
 
                 // ADD MODEL ACTION HERE
 
-
-
                 backPanel.setVisible(true);
                 currentPanel.setVisible(false);
-            }catch (NumberFormatException es1){
+            } catch (NumberFormatException es1){
                 JOptionPane.showMessageDialog(new JFrame(), "Amount and Receiver Account Id must be valid! ", "Error",
                         JOptionPane.ERROR_MESSAGE);
-            }
-            catch(Exception es2){
+            } catch(Exception es2){
                 JOptionPane.showMessageDialog(new JFrame(),es2.getMessage()  , "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
@@ -168,6 +140,7 @@ public class TransferOthersAccount extends JPanel {
 
     // DO NOT TOUCH THIS METHOD
     public void setBackButton(MainMenu backPanel){
+    	back = new JButton("Back");
         back.addActionListener(e -> {
             backPanel.setVisible(true);
             currentPanel.setVisible(false);

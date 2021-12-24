@@ -1,22 +1,37 @@
 package com.cs320_mts.GUI;
 
-import com.cs320_mts.model.User;
+import com.cs320_mts.model.*;
+import com.cs320_mts.service.AccountService;
+import com.cs320_mts.service.UserService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.List;
 
 @Component
 public class ViewTransactionHist extends JPanel {
+	
+	@Autowired
+	UserService userService;
+	
+	@Autowired
+	AccountService accountService;
+	
     private int userId;
-    private final JButton back;
-    private final JTable transactions;
-    private final ViewTransactionHist currentPanel;
-    public ViewTransactionHist(){
-        currentPanel    = this;
-        back            = new JButton("Back");
+    private JButton back;
+    private JTable transactions;
+    private ViewTransactionHist currentPanel;
+    
+    public ViewTransactionHist(){ }
+    
+    public void setViewTransactionHist() {
+    	removeAll();
+    	currentPanel    = this;
 
         String[] columns        = {"Transaction Id","Date","Amount","Sender Account","Receiver Account"};
         DefaultTableModel model = new DefaultTableModel(columns,0);
@@ -37,6 +52,7 @@ public class ViewTransactionHist extends JPanel {
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        
 
         // ************ MODEL ACTION NECESSARY ************
         // MODEL ACTION HERE
@@ -44,6 +60,8 @@ public class ViewTransactionHist extends JPanel {
         // use model.addRow() with 5 String tuple For each transaction
         // model.addRow(new String[]{"2345","2021-12-01,"1200$","123850291","742930123"})
         // **********************************************************************
+        
+        List<Account> accounts = userService.getById(userId).getAccounts();
 
 
         //DO NOT TOUCH below
@@ -68,8 +86,11 @@ public class ViewTransactionHist extends JPanel {
         transactions.setDefaultEditor(Object.class, null);
         back.setFont(new Font("Arial",Font.BOLD,20));
     }
+    
+    
     // ************ DON'T TOUCH ************
     public void setBackButton(MainMenu mainMenu){
+    	back = new JButton("Back");
         back.addActionListener(e -> {
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
