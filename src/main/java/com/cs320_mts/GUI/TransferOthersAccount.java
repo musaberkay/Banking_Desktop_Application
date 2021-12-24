@@ -141,6 +141,11 @@ public class TransferOthersAccount extends JPanel {
                 transaction.setAmount(amount);
                 accountService.moneyTransfer(selectedSenderAccountId, transaction);
 
+
+                // ADD MODEL ACTION HERE
+
+
+
                 backPanel.setVisible(true);
                 currentPanel.setVisible(false);
             }catch (NumberFormatException es1){
