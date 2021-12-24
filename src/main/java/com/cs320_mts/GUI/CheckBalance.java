@@ -29,13 +29,12 @@ public class CheckBalance extends JPanel {
         //DO NOT TOUCH ABOVE, IF IT'S POSSIBLE
 
         // ************ DATABASE ACTION NECESSARY ************
-        // DATABASE ACTION HERE
-        // use model.addRow() with 2 String tuple For each transaction
-        // model.addRow(new String[]{"5634", "3250"})
-        //EXAMPLES: (DELETE AFTER IMPL.)
-        model.addRow(new String[]{"33333333333","333333333333333"});
-        model.addRow(new String[]{"12321312312","312312312312312"});
-        // model.addRow(new String[]{user.getAccounts().get(0).getAccountId(), user.getAccounts().get(0).getBalance().toString()}
+        List<Account> accounts = user.getAccounts();
+        for(Account account : accounts) {
+        	String accountId = String.valueOf(account.getAccountId());
+        	String balance = String.valueOf(account.getBalance());
+        	model.addRow(new String[] {accountId, balance});
+        }
         // **********************************************************************
 
 
