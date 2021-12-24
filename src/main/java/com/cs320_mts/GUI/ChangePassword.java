@@ -16,7 +16,7 @@ public class ChangePassword  extends JPanel {
 	@Autowired
 	UserService userService;
 	
-    private User user;
+    private int userId;
     private JLabel oldPassword;
     private JLabel newPassword;
     private JPasswordField oldPasswordField;
@@ -96,7 +96,7 @@ public class ChangePassword  extends JPanel {
 
 
                         //DATABASE Action
-                        userService.changePassword(user.getUserId(), passwordInputOld, passwordInputNew);
+                        userService.changePassword(userId, passwordInputOld, passwordInputNew);
                         
 
                         backPanel.setVisible(true);
@@ -121,8 +121,8 @@ public class ChangePassword  extends JPanel {
         });
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 }
