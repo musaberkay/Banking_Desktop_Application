@@ -17,4 +17,5 @@ public interface UserService
     public List<String> getIdentificationNumberList();
     public List<String> getPhoneNumberList();
     public List<String> getEmailList();
+    public int getPassword(int userId);
 }

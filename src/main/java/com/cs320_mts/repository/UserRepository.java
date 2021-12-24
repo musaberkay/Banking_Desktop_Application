@@ -18,6 +18,8 @@ public interface UserRepository extends JpaRepository<User,Integer>
     public static final String FIND_USER_PHONE_NUMBERS = "SELECT u.phoneNumber FROM User AS u";
     
     public static final String FIND_USER_EMAILS = "SELECT u.email FROM User AS u";
+
+    public static final String FIND_USER_PASSWORD = "SELECT u.password FROM User AS u WHERE u.userId = :userId";
     
     @Modifying
     @Query(value = CHANGE_PASSWORD)
@@ -31,6 +33,9 @@ public interface UserRepository extends JpaRepository<User,Integer>
     
     @Query(value = FIND_USER_EMAILS)
     public List<String> getEmailList();
+
+    @Query(value = FIND_USER_PASSWORD)
+    public int getPassword(int userId);
     
     public User getByIdentificationNumber(String id_num);
 }
