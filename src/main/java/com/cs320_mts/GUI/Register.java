@@ -243,7 +243,7 @@ public class Register extends JPanel {
             //User inserted to DB
 
             // ************ DON'T TOUCH ************
-            mainMenu.setUser(user);
+            mainMenu.setUserId(user.getUserId());
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
             }catch (Exception es){
