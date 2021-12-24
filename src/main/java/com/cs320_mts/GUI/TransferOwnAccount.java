@@ -18,9 +18,9 @@ import java.util.List;
 public class TransferOwnAccount extends JPanel {
 	
 	@Autowired
-	AccountService accountService;
+    AccountService accountService;
 	
-    private User user;
+    private User user = Login.user;
     private final JLabel accountSender;
     private final JLabel accountReceiver;
     private final JLabel amount;
