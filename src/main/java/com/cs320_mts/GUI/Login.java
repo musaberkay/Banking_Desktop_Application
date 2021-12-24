@@ -10,7 +10,7 @@ import java.awt.*;
 
 @Component
 public class Login extends JPanel {
-    private User user;
+    private int userId;
     private final JLabel identificationNumber;
     private final JLabel password;
     private final JTextField identificationNumberText;
@@ -92,11 +92,10 @@ public class Login extends JPanel {
                 if (!(identificationNumberInput.charAt(i) >= '0' && identificationNumberInput.charAt(i) <= '9'))
                     throw new NumberFormatException();
             }
-            user = new User();
             // user = GET User information FROM DATABASE !!!
             if(userService.getByIdentificationNumber(identificationNumberInput)!=null){
                 if(userService.getByIdentificationNumber(identificationNumberInput).getPassword()==passwordInput){
-                    user = userService.getByIdentificationNumber(identificationNumberInput);
+                    userId = userService.getByIdentificationNumber(identificationNumberInput).getUserId();
                 }
                 else{
                     throw new Exception("Password is wrong.");
@@ -107,7 +106,7 @@ public class Login extends JPanel {
             }
             // User is login succesfully if everything OK.
 
-            mainMenu.setUser(user);
+            mainMenu.setUserId(userId);
             mainMenu.setVisible(true);
             currentPanel.setVisible(false);
             }catch (ArithmeticException es){

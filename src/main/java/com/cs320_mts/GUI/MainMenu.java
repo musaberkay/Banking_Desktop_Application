@@ -5,6 +5,7 @@ import com.cs320_mts.model.User;
 import com.cs320_mts.service.AccountService;
 import com.cs320_mts.service.UserService;
 
+import com.cs320_mts.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,8 +18,11 @@ public class MainMenu extends JPanel {
 	
 	@Autowired
 	AccountService accountService;
+
+    @Autowired
+    UserServiceImpl userService;
 	
-    private User user = new User();
+    private int userId;
     private final JButton createAccount;
     private final JButton checkBalance;
     private final JButton transferOwnAccount;
@@ -28,6 +32,8 @@ public class MainMenu extends JPanel {
     private final JButton exit;
 
     private final MainMenu currentPanel;
+
+
 
     public MainMenu() {
         currentPanel = this;
@@ -64,16 +70,16 @@ public class MainMenu extends JPanel {
         createAccount.addActionListener(e -> {
         	//DATABASE ACTIONS HERE
         	try {
-                if(user.getAccounts().size()==3) {
+                if(userService.getById(userId).getAccounts().size()==3) {
                 	throw new Exception("You have 3 accounts, plase contact with Customer Services to create a new account.");
                 }
                 else {
                 	int dialogResult = JOptionPane.showConfirmDialog(new JFrame(), "Are you sure you want to create an account?", "Question", JOptionPane.YES_NO_OPTION);
                     if (dialogResult == JOptionPane.YES_OPTION) {
 	                	Account account = new Account();
-	                	account.setUser(user);
+	                	account.setUser(userService.getById(userId));
 	                	account.setBalance(0);  // NOW DEFAULT, WILL BE DESIGNED
-	                	user.getAccounts().add(account);
+                        userService.getById(userId).getAccounts().add(account);
 	                	accountService.save(account);
 	                	JOptionPane.showMessageDialog(new JFrame(), "Account is created succesfully!", "Succes", JOptionPane.INFORMATION_MESSAGE);
                     }
@@ -87,7 +93,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setCheckBalance(CheckBalance nextPanel){
         checkBalance.addActionListener(e -> {
-            nextPanel.setUser(user);
+            nextPanel.setUserId(userId);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -96,7 +102,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setTransferOwnAccount(TransferOwnAccount nextPanel){
         transferOwnAccount.addActionListener(e -> {
-            nextPanel.setUser(user);
+            nextPanel.setUserId(userId);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -105,7 +111,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setTransferOthersAccount(TransferOthersAccount nextPanel){
         transferOthersAccount.addActionListener(e -> {
-            nextPanel.setUser(user);
+            nextPanel.setUserId(userId);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -114,7 +120,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setViewTransactionHist(ViewTransactionHist nextPanel){
         viewTransactionHistory.addActionListener(e -> {
-            nextPanel.setUser(user);
+            nextPanel.setUserId(userId);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -123,7 +129,7 @@ public class MainMenu extends JPanel {
     //DO NOT TOUCH THIS METHOD
     public void setChangePassword(ChangePassword nextPanel){
         changePassword.addActionListener(e -> {
-            nextPanel.setUser(user);
+            nextPanel.setUserId(userId);
             nextPanel.setVisible(true);
             currentPanel.setVisible(false);
         });
@@ -136,8 +142,8 @@ public class MainMenu extends JPanel {
         });
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
 }

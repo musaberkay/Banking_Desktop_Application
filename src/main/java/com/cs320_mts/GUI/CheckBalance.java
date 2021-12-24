@@ -1,5 +1,6 @@
 package com.cs320_mts.GUI;
 
+import com.cs320_mts.model.Account;
 import com.cs320_mts.model.User;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +9,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
+import java.util.List;
 
 @Component
 public class CheckBalance extends JPanel {

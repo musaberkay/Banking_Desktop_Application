@@ -52,7 +52,6 @@ public class TransferOthersAccount extends JPanel {
         listModel = new DefaultListModel();
 
         // ************ DATABASE ACTION NECESSARY ************
-        
         accountsList    = new JList(listModel);
         List<Account> accounts = user.getAccounts();
         for(Account account : accounts) {
