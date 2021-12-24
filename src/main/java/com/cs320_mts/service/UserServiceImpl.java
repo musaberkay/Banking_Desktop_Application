@@ -50,4 +50,20 @@ public class UserServiceImpl implements UserService
 	public void changePassword(int userId, int oldPassword, int newPassword) {
 		userRepository.changePassword(userId, oldPassword, newPassword);
 	}
+
+    @Override
+    public List<String> getIdentificationNumberList() {
+        return userRepository.getIdentificationNumberList();
+    }
+
+    @Override
+    public List<String> getPhoneNumberList() {
+        return userRepository.getPhoneNumberList();
+    }
+
+    @Override
+    public List<String> getEmailList() {
+        return userRepository.getEmailList();
+    }
+
 }
