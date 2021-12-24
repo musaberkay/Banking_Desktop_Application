@@ -10,5 +10,5 @@ public interface AccountService {
     public List<Account> getAll();
     public Account getById(int id);
     public void deleteById(int id);
-    public boolean moneyTransfer(int senderId, Transaction transaction);
+    public boolean moneyTransfer(int senderId, Transaction transaction) throws Exception;
 }

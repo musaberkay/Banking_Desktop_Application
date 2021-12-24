@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class AccountServiceImpl implements AccountService
+public class AccountServiceImpl implements AccountService 
 {
 
     @Autowired
@@ -39,17 +39,17 @@ public class AccountServiceImpl implements AccountService
 
     @Override
     @Transactional
-    public boolean moneyTransfer(int senderId, Transaction transaction) {
+    public boolean moneyTransfer(int senderId, Transaction transaction) throws Exception {
         List<Integer> accountIdList = accountRepository.getAccountIdList();
 
         if(transaction.getAmount() <= 0)
         {
-            System.out.println("Please enter valid amount");
-            return false;
+//            System.out.println("Please enter valid amount");
+            throw new Exception("Please enter valid amount");
         }else if(!isContain(transaction.getRecipientAccId(),accountIdList))
         {
-            System.out.println("Please enter valid recipient id");
-            return false;
+//            System.out.println("Please enter valid recipient id");
+            throw new Exception("Please enter valid recipient id");
         }
 
         Account senderAccount = accountRepository.findById(senderId).get();
@@ -65,8 +65,9 @@ public class AccountServiceImpl implements AccountService
 
         }else
         {
-            System.out.println("Not enough account balance");
-            return false;
+//            System.out.println("Not enough account balance");
+//            return false;
+            throw new Exception("Not enough account balance");
         }
 
         return true;
