@@ -170,7 +170,7 @@ public class TransferOthersAccount extends JPanel {
         });
     }
 
-    public void setUserId(int user) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 }
