@@ -89,6 +89,7 @@ public class ViewTransactionHist extends JPanel {
             c.gridy = 1;
             transactions2.setRowHeight(40);
             c.ipadx = 750;
+            c.insets = new Insets(10,0,0,0);
             this.add(transactions2,c);
         }
         if(userService.getById(userId).getAccounts().size()>2){
@@ -96,6 +97,7 @@ public class ViewTransactionHist extends JPanel {
             c.gridy = 2;
             transactions3.setRowHeight(40);
             c.ipadx = 750;
+            c.insets = new Insets(10,0,0,0);
             this.add(transactions3,c);
         }
         c.gridx = 0;
