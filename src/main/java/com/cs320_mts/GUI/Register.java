@@ -151,96 +151,22 @@ public class Register extends JPanel {
         register.addActionListener(e -> {
             try{
 
-                if(String.valueOf(passwordText.getPassword()).length() != 6)
-                    throw new Exception("Password length must be 6");
-                if(!String.valueOf(passwordText.getPassword()).matches("[0-9]+"))
-                    throw new Exception("Password must be only digits");
-
             String userName         = nameText.getText();
             String userSurname      = surnameText.getText();
             String userPassword_    = String.valueOf(passwordText.getPassword());
             int userPassword        = Integer.parseInt(userPassword_);  // Use this
             String userDateOfBirth  = dateOfBirthText.getText(); //  like 21-07-2000
 
-
-                if (userName.length() > 100 || userName.length() < 2)
-                    throw new Exception("Name must be between 2 and 100 characters");
-
-                for(int i = 0 ; i < userName.length(); i++){
-                    if (!(userName.charAt(i) >= 'A' && userName.charAt(i) <= 'z'))
-                        throw new Exception("Name only includes letters");
-                }
-                if (userSurname.length() > 100 || userSurname.length() < 2)
-                    throw new Exception("Surname must be between 2 and 100 characters");
-
-                for(int i = 0 ; i < userSurname.length(); i++){
-                    if (!(userSurname.charAt(i) >= 'A' && userSurname.charAt(i) <= 'z'))
-                        throw new Exception("Surname only includes letters");
-                }
-                if(userDateOfBirth.length() != 10) {
-                    throw new Exception("It is not valid date of birth should be in form 30-12-2021");
-                }
-                if(userDateOfBirth.charAt(2) != '-' || userDateOfBirth.charAt(5) != '-'){
-                    throw new Exception("It is not valid date of birth should be in form 30-12-2021");
-                }
-                for(int i = 0 ; i < 2 ; i++ ){
-                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
-                        throw new Exception("Day is not in valid form");
-                }
-                for(int i = 3 ; i < 5 ; i++){
-                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
-                        throw new Exception("Month is not in valid form");
-                }
-                for(int i = 6 ; i < 10 ; i++){
-                    if(!(userDateOfBirth.charAt(i) >= '0' && userDateOfBirth.charAt(i) <= '9'))
-                        throw new Exception("Year is not in valid form");
-                }
-
-            int day   = Integer.parseInt(userDateOfBirth.substring(0,2));
-            int month   = Integer.parseInt(userDateOfBirth.substring(3,5));
-            int year    = Integer.parseInt(userDateOfBirth.substring(6,10));
-
-                if(year > 2005 || year < 1900)
-                    throw new Exception("Not valid year");
-                if(month > 12 || 1 > month)
-                    throw new Exception("Not valid month");
-                if(day > 31 || 1 > day)
-                    throw new Exception("Not valid day");
-
                 
             String userIdentificationNumber     = identificationNumberText.getText();
             String userEmail                    = emailText.getText();
             String userPhoneNumber              = phoneNumberText.getText();
 
-                if(userIdentificationNumber.length() != 11)
-                    throw new Exception("Identification number must be 11 digit number");
-                for(int i = 0 ; i < userIdentificationNumber.length(); i++){
-                    if (!(userIdentificationNumber.charAt(i) >= '0' && userIdentificationNumber.charAt(i) <= '9'))
-                        throw new Exception("Identification number only includes digits");
-                }
-                if(!userEmail.contains("@"))
-                    throw new Exception("Email needs '@' character");
-
-                if(userPhoneNumber.length() != 10)
-                    throw new Exception("Phone number must be 10 digits ");
-
-                for(int i = 0 ; i < userPhoneNumber.length() ; i++){
-                    if(!(userPhoneNumber.charAt(i) >= '0' && userPhoneNumber.charAt(i) <= '9'))
-                        throw new Exception("Phone number only includes digits");
-            }
+            user = new User(userName,userSurname,userPassword,userDateOfBirth
+                    ,userIdentificationNumber,userEmail,userPhoneNumber);
 
             // DATABASE ACTION HERE
-             if(userService.getIdentificationNumberList().contains(userIdentificationNumber)) {
-            	throw new Exception("This user has already registered.");
-            } else if(userService.getPhoneNumberList().contains(userPhoneNumber)) {
-            	throw new Exception("This phone number has already been used.");
-            } else if(userService.getEmailList().contains(userEmail)) {
-            	throw new Exception("This email has already been used.");
-            } else {
-                user = new User(userName, userSurname, userPassword, userDateOfBirth, userIdentificationNumber,
-                            userEmail, userPhoneNumber);
                 userService.save(user);
-            }
             //User inserted to DB
 
             // ************ DON'T TOUCH ************
