@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -118,11 +119,19 @@ public class TransferOthersAccount extends JPanel {
                 int receiverAccountId = parseInt(accountIDText.getText());
 
                 //DATABASE ACTION
-                Transaction transaction = new Transaction();
-                transaction.setReceiverAccId(receiverAccountId);
-                transaction.setAmount(amount);
-                accountService.moneyTransfer(selectedSenderAccountId, transaction);
-
+                List<Integer> list = new ArrayList<>();
+                for(Account account: userService.getById(userId).getAccounts()){
+                    list.add(account.getAccountId());
+                }
+                if(!list.contains(receiverAccountId)) {
+                    Transaction transaction = new Transaction();
+                    transaction.setReceiverAccId(receiverAccountId);
+                    transaction.setAmount(amount);
+                    accountService.moneyTransfer(selectedSenderAccountId, transaction);
+                }
+                else{
+                    throw new Exception("You can not send money to your own account in this page.");
+                }
 
                 // ADD MODEL ACTION HERE
 

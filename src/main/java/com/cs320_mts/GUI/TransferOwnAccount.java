@@ -120,6 +120,8 @@ public class TransferOwnAccount extends JPanel {
                 int selectedReceiverAccountId = Integer.parseInt(String.valueOf(accountsList2.getSelectedValue()));
                 double amount = Double.parseDouble(amountText.getText());
 
+                if(selectedSenderAccountId==selectedReceiverAccountId)
+                    throw new Exception("You can not choose same account.");
 
                 // DATABASE ACTION HERE
                 Transaction transaction = new Transaction();
