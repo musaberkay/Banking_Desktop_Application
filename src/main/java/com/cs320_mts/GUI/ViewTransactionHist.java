@@ -24,9 +24,11 @@ public class ViewTransactionHist extends JPanel {
 	
     private int userId;
     private JButton back;
-    private JTable transactions;
+    private JTable transactions1;
+    private JTable transactions2;
+    private JTable transactions3;
     private ViewTransactionHist currentPanel;
-    
+
     public ViewTransactionHist(){ }
     
     public void setViewTransactionHist() {
@@ -36,23 +38,29 @@ public class ViewTransactionHist extends JPanel {
         // ************ GUI ACTION NECESSARY ************
     	// GUI ACTION IS NEEDED TO CREATE TABLES FOR EACH ACCOUNT OF THE USER
         String[] columns        = {"Transaction Id","Date","Amount","Sender Account","Receiver Account"};
-        DefaultTableModel model = new DefaultTableModel(columns,0);
-        transactions            = new JTable(model);
+        DefaultTableModel model1 = new DefaultTableModel(columns,0);
+        transactions1            = new JTable(model1);
+        DefaultTableModel model2 = new DefaultTableModel(columns,0);
+        transactions2            = new JTable(model2);
+        DefaultTableModel model3 = new DefaultTableModel(columns,0);
+        transactions3            = new JTable(model3);
         // ************ DON'T TOUCH ************
-        model.addRow(new String[]{"Transaction Id","Date","Amount","Sender Account","Receiver Account"});
+        model1.addRow(new String[]{"Transaction Id","Date","Amount","Sender Account","Receiver Account"});
+        model2.addRow(new String[]{"Transaction Id","Date","Amount","Sender Account","Receiver Account"});
+        model3.addRow(new String[]{"Transaction Id","Date","Amount","Sender Account","Receiver Account"});
         // ************ DON'T TOUCH ************
 
 
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"}); // Example for adding row
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        //EXAMPLES - DELETE AFTER IMPL!!!!
+        model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"}); // Example for adding row
+        model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model2.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model2.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model2.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         
 
         // ************ MODEL ACTION NECESSARY ************
@@ -69,22 +77,44 @@ public class ViewTransactionHist extends JPanel {
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.CENTER;
+        //transaction1
         c.gridx = 0;
         c.gridy = 0;
-        transactions.setRowHeight(40);
+        transactions1.setRowHeight(40);
         c.ipadx = 750;
-        this.add(transactions,c);
+        this.add(transactions1,c);
+        //transaction2 if it exists
+        if(userService.getById(userId).getAccounts().size()>1){
+            c.gridx = 0;
+            c.gridy = 1;
+            transactions2.setRowHeight(40);
+            c.ipadx = 750;
+            this.add(transactions2,c);
+        }
+        if(userService.getById(userId).getAccounts().size()>2){
+            c.gridx = 0;
+            c.gridy = 2;
+            transactions3.setRowHeight(40);
+            c.ipadx = 750;
+            this.add(transactions3,c);
+        }
         c.gridx = 0;
-        c.gridy = 2;
+        c.gridy = 3;
         c.ipadx = 200;
         c.insets = new Insets(40,0,0,0);
         this.add(back,c);
 
-        transactions.setFont(new Font("Arial",Font.ITALIC,12));
+        transactions1.setFont(new Font("Arial",Font.ITALIC,12));
+        transactions2.setFont(new Font("Arial",Font.ITALIC,12));
+        transactions3.setFont(new Font("Arial",Font.ITALIC,12));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
-        transactions.setDefaultRenderer(String.class, centerRenderer);
-        transactions.setDefaultEditor(Object.class, null);
+        transactions1.setDefaultRenderer(String.class, centerRenderer);
+        transactions2.setDefaultRenderer(String.class, centerRenderer);
+        transactions3.setDefaultRenderer(String.class, centerRenderer);
+        transactions1.setDefaultEditor(Object.class, null);
+        transactions2.setDefaultEditor(Object.class, null);
+        transactions3.setDefaultEditor(Object.class, null);
         back.setFont(new Font("Arial",Font.BOLD,20));
     }
     
