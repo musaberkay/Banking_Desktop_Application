@@ -11,6 +11,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Component
@@ -52,7 +54,7 @@ public class ViewTransactionHist extends JPanel {
 
 
         //EXAMPLES - DELETE AFTER IMPL!!!!
-        model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"}); // Example for adding row
+        /*model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"}); // Example for adding row
         model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model1.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model2.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
@@ -60,17 +62,91 @@ public class ViewTransactionHist extends JPanel {
         model2.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
         model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
-        model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});
+        model3.addRow(new String[]{"1","2021.12.23","2500"," 3705","6589"});*/
         
 
         // ************ MODEL ACTION NECESSARY ************
+        int counter = 0;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        for(Account account: userService.getById(userId).getAccounts()){
+            int size = account.getTransactions().size();
+            List<Transaction> transactions = account.getTransactions();
+            if(counter == 0){
+                if(size>0){
+                    model1.addRow(new String[]{Integer.toString(transactions.get(size-1).getTransactionId()),
+                            dateFormat.format(transactions.get(size-1).getDate()),
+                            Double.toString(transactions.get(size-1).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-1).getRecipientAccId())});
+                }
+                if(size>1){
+                    model1.addRow(new String[]{Integer.toString(transactions.get(size-2).getTransactionId()),
+                            dateFormat.format(transactions.get(size-2).getDate()),
+                            Double.toString(transactions.get(size-2).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-2).getRecipientAccId())});
+                }
+                if(size>2){
+                    model1.addRow(new String[]{Integer.toString(transactions.get(size-3).getTransactionId()),
+                            dateFormat.format(transactions.get(size-3).getDate()),
+                            Double.toString(transactions.get(size-3).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-3).getRecipientAccId())});
+                }
+            }
+            if(counter == 1){
+                if(size>0){
+                    model2.addRow(new String[]{Integer.toString(transactions.get(size-1).getTransactionId()),
+                            dateFormat.format(transactions.get(size-1).getDate()),
+                            Double.toString(transactions.get(size-1).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-1).getRecipientAccId())});
+                }
+                if(size>1){
+                    model2.addRow(new String[]{Integer.toString(transactions.get(size-2).getTransactionId()),
+                            dateFormat.format(transactions.get(size-2).getDate()),
+                            Double.toString(transactions.get(size-2).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-2).getRecipientAccId())});
+                }
+                if(size>2){
+                    model2.addRow(new String[]{Integer.toString(transactions.get(size-3).getTransactionId()),
+                            dateFormat.format(transactions.get(size-3).getDate()),
+                            Double.toString(transactions.get(size-3).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-3).getRecipientAccId())});
+                }
+            }
+            if(counter == 2){
+                if(size>0){
+                    model3.addRow(new String[]{Integer.toString(transactions.get(size-1).getTransactionId()),
+                            dateFormat.format(transactions.get(size-1).getDate()),
+                            Double.toString(transactions.get(size-1).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-1).getRecipientAccId())});
+                }
+                if(size>1){
+                    model3.addRow(new String[]{Integer.toString(transactions.get(size-2).getTransactionId()),
+                            dateFormat.format(transactions.get(size-2).getDate()),
+                            Double.toString(transactions.get(size-2).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-2).getRecipientAccId())});
+                }
+                if(size>2){
+                    model3.addRow(new String[]{Integer.toString(transactions.get(size-3).getTransactionId()),
+                            dateFormat.format(transactions.get(size-3).getDate()),
+                            Double.toString(transactions.get(size-3).getAmount()),
+                            Integer.toString(account.getAccountId()),
+                            Integer.toString(transactions.get(size-3).getRecipientAccId())});
+                }
+            }
+            counter++;
+        }
         // MODEL ACTION HERE
         // LAST 10 TRANSACTIONS!!!
         // use model.addRow() with 5 String tuple For each transaction
         // model.addRow(new String[]{"2345","2021-12-01,"1200$","123850291","742930123"})
         // **********************************************************************
-        
-        List<Account> accounts = userService.getById(userId).getAccounts();
 
 
         //DO NOT TOUCH below
