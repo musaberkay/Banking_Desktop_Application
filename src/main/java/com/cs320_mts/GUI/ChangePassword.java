@@ -89,10 +89,20 @@ public class ChangePassword  extends JPanel {
                 if(newPasswordText.length() != 6)
                     throw new ArithmeticException("New Password must be 6 digit number");
                 int passwordInputNew = Integer.parseInt(newPasswordText);
-                
-                userService.changePassword(userId, passwordInputOld, passwordInputNew);
-                JOptionPane.showMessageDialog(new JFrame(),"Password is successfully changed!" , "Success",
-                        JOptionPane.INFORMATION_MESSAGE);
+
+                if(userService.getById(userId).getPassword()==passwordInputOld){
+                    if(userService.getById(userId).getPassword()!=passwordInputNew && passwordInputNew!=passwordInputOld){
+                        userService.changePassword(userId, passwordInputOld, passwordInputNew);
+                        JOptionPane.showMessageDialog(new JFrame(),"Password is successfully changed!" , "Success",
+                                JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                        throw new Exception("New password cannot be the same as old password");
+                    }
+                }
+                else{
+                    throw new Exception("The old password is written incorrectly.");
+                }
                 
                 backPanel.setVisible(true);
                 currentPanel.setVisible(false);
