@@ -50,11 +50,24 @@ public class TransferOthersAccount extends JPanel {
         DefaultListModel listModel;
         listModel = new DefaultListModel();
 
-        accountsList    = new JList(listModel);
+
         List<Account> accounts = userService.getById(userId).getAccounts();
-        for(Account account : accounts) {
-       	 listModel.addElement(account.getAccountId());
+        List<Integer> accIdList = new ArrayList<>();
+        List<Integer> filteredAccIdList = new ArrayList<>();
+
+        for(Account account : accounts)
+        {
+            accIdList.add(account.getAccountId());
         }
+        for(Integer item : accIdList)
+        {
+            if(!isContain(filteredAccIdList,item))
+                filteredAccIdList.add(item);
+        }
+        for(Integer item : filteredAccIdList)
+            listModel.addElement(item);
+
+        accountsList    = new JList(listModel);
 
         //LAYOUT
         this.setLayout(new GridBagLayout());
@@ -158,5 +171,15 @@ public class TransferOthersAccount extends JPanel {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    private boolean isContain(List<Integer> idList, int id)
+    {
+        for (Integer item : idList)
+        {
+            if(item == id)
+                return true;
+        }
+        return false;
     }
 }

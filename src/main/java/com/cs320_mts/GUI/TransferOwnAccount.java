@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -45,9 +46,22 @@ public class TransferOwnAccount extends JPanel {
         listModel = new DefaultListModel();
         
         List<Account> accounts = userService.getById(userId).getAccounts();
-        for(Account account : accounts) {
-        	listModel.addElement(account.getAccountId());
+        List<Integer> accIdList = new ArrayList<>();
+        List<Integer> filteredAccIdList = new ArrayList<>();
+
+        for(Account account : accounts)
+        {
+            accIdList.add(account.getAccountId());
         }
+            for(Integer item : accIdList)
+            {
+                if(!isContain(filteredAccIdList,item))
+                    filteredAccIdList.add(item);
+            }
+            for(Integer item : filteredAccIdList)
+                listModel.addElement(item);
+
+
         accountsList1   = new JList(listModel);
         accountsList2   = new JList(listModel);
 
@@ -155,5 +169,15 @@ public class TransferOwnAccount extends JPanel {
     
     public void setUserId(int userId){
         this.userId = userId;
+    }
+
+    private boolean isContain(List<Integer> idList, int id)
+    {
+        for (Integer item : idList)
+        {
+            if(item == id)
+                return true;
+        }
+        return false;
     }
 }
