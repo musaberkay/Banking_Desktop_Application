@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -68,7 +69,19 @@ public class ViewTransactionHist extends JPanel {
         // ************ MODEL ACTION NECESSARY ************
         int counter = 0;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        for(Account account: userService.getById(userId).getAccounts()){
+
+        List<Account> filteredAccounts = new ArrayList<>();
+
+        for(Account account : userService.getById(userId).getAccounts())
+        {
+            if(!isContain(filteredAccounts,account.getAccountId()))
+                filteredAccounts.add(account);
+        }
+
+
+
+
+        for(Account account: filteredAccounts){
             int size = account.getTransactions().size();
             List<Transaction> transactions = account.getTransactions();
             if(counter == 0){
@@ -207,5 +220,15 @@ public class ViewTransactionHist extends JPanel {
     }
     public void setUserId(int userId){
         this.userId = userId;
+    }
+
+    private boolean isContain(List<Account> accountList,int id)
+    {
+        for (Account account : accountList)
+        {
+            if(account.getAccountId() == id)
+                return true;
+        }
+        return false;
     }
 }
