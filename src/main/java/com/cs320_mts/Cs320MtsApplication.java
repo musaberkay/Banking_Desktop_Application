@@ -11,8 +11,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 public class Cs320MtsApplication implements CommandLineRunner {
 
-    @Autowired
-    Application application;
+    //@Autowired
+    //Application application;
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(Cs320MtsApplication.class).headless(false).run(args);
@@ -20,7 +20,7 @@ public class Cs320MtsApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        application.init();
+        //application.init();
     }
 
 
