@@ -28,8 +28,8 @@ public class TestChangePassword {
             int userId = userService.getByIdentificationNumber(ID_NUMBER).getUserId();
             userService.changePassword(userId, OLD_PASSWORD, NEW_PASSWORD);
             if(userService.getPassword(userId)==NEW_PASSWORD){
-                assertTrue(true);
                 System.out.println("Password is successfully changed");
+                assertTrue(true);
             }
             else{
                 assertTrue(false);

@@ -32,8 +32,8 @@ public class TestCreateAccount {
                 account.setBalance(0);  // NOW DEFAULT, WILL BE DESIGNED
                 userService.getByIdentificationNumber(ID_NUMBER).getAccounts().add(account);
                 accountService.save(account);
-                assertTrue(true);
                 System.out.println("New account is successfully added");
+                assertTrue(true);
             }
             else{
                 assertTrue(false);
@@ -61,8 +61,9 @@ public class TestCreateAccount {
 
                 userService.getByIdentificationNumber(ID_NUMBER).getAccounts().add(account);
                 accountService.save(account);
-                assertTrue(true);
                 System.out.println("New account is successfully added");
+                assertTrue(true);
+
             }
             else{
                 assertTrue(false);

@@ -33,8 +33,8 @@ public class TestLogin
 
             if(userService.getPassword(userId)  == PASSWORD)
             {
-                assertTrue(true);
                 System.out.println("Login is successfully completed");
+                assertTrue(true);
             } else
                 assertTrue(false);
 
@@ -56,8 +56,8 @@ public class TestLogin
 
             if(userService.getPassword(userId)  != WRONG_PASSWORD)
             {
-                assertTrue(true);
                 System.out.println("the password corresponds is wrong");
+                assertTrue(true);
             } else
                 assertTrue(false);
 
@@ -79,8 +79,8 @@ public class TestLogin
             assertTrue(false);
         }catch(Exception e)
         {
-            assertTrue(true);
             System.out.println("There is no user with that id number.");
+            assertTrue(true);
         }
     }
 

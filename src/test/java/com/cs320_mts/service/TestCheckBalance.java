@@ -25,8 +25,8 @@ public class TestCheckBalance {
     public void testCheckBalance(){
         try{
             if(userService.getByIdentificationNumber(ID_NUMBER).getAccounts().get(0).getBalance()==first_amount){
-                assertTrue(true);
                 System.out.println("Balance is succesfully showed.");
+                assertTrue(true);
             }
             else{
                 assertTrue(false);

@@ -32,6 +32,7 @@ public class TestMoneyTransferInside {
                 account2.getAccountId());
         try{
             accountService.moneyTransfer(account1.getAccountId(),transaction);
+            System.out.println("Money transfer between user’s accounts is performed successfully.");
             assertTrue(true);
         }
         catch(Exception es){
@@ -52,9 +53,11 @@ public class TestMoneyTransferInside {
                 account2.getAccountId());
         try{
             accountService.moneyTransfer(account1.getAccountId(),transaction);
+
             assertTrue(true);
         }
         catch(Exception es){
+            System.out.println("Money transfer between user’s accounts is not performed.");
             assertTrue(false);
         }
     }

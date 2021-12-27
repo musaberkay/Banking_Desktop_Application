@@ -14,7 +14,6 @@ public class TestMoneyTransferOutside {
     private final static String SENDER_NUMBER = "35007269396";
     private final static String RECEIVER_NUMBER = "24107854293";
 
-
     @Autowired
     UserService userService;
 
@@ -33,6 +32,7 @@ public class TestMoneyTransferOutside {
                 account2.getAccountId());
         try{
             accountService.moneyTransfer(account1.getAccountId(),transaction);
+            System.out.println("Money transfer between different user accounts is performed successfully.");
             assertTrue(true);
         }
         catch(Exception es){
@@ -56,6 +56,7 @@ public class TestMoneyTransferOutside {
             assertTrue(true);
         }
         catch(Exception es){
+            System.out.println("Money transfer is not performed because of not existing id.");
             assertTrue(false);
         }
     }
@@ -74,6 +75,7 @@ public class TestMoneyTransferOutside {
             assertTrue(true);
         }
         catch(Exception es){
+            System.out.println("Money transfer is not performed because of insufficient balance.");
             assertTrue(false);
         }
 

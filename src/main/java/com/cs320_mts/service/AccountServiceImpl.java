@@ -44,11 +44,9 @@ public class AccountServiceImpl implements AccountService
 
         if(transaction.getAmount() <= 0)
         {
-//            System.out.println("Please enter valid amount");
             throw new Exception("Please enter valid amount");
         }else if(!isContain(transaction.getRecipientAccId(),accountIdList))
         {
-//            System.out.println("Please enter valid recipient id");
             throw new Exception("Please enter valid recipient id");
         }
 
@@ -65,8 +63,6 @@ public class AccountServiceImpl implements AccountService
 
         }else
         {
-//            System.out.println("Not enough account balance");
-//            return false;
             throw new Exception("Not enough account balance");
         }
 

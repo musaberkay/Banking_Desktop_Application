@@ -28,8 +28,8 @@ public class TestRegistration
                 "24106963586","lebron.james@ozu.edu.tr","5511094569");
         try
         {
-            userService.save(user);
             System.out.println("User is registered successfully");
+            userService.save(user);
         }catch(Exception e)
         {
             System.out.println("Registration is failed");
@@ -50,8 +50,8 @@ public class TestRegistration
             assertTrue(false);
         }catch(Exception e)
         {
-            assertTrue(true);
             System.out.println("An account is already registered with this identification number");
+            assertTrue(true);
         }
     }
 
@@ -71,8 +71,8 @@ public class TestRegistration
             assertTrue(false);
         }catch(Exception e)
         {
-            assertTrue(true);
             System.out.println("You are under 18");
+            assertTrue(true);
         }
     }
 
@@ -92,8 +92,8 @@ public class TestRegistration
             assertTrue(false);
         }catch(Exception e)
         {
-            assertTrue(true);
             System.out.println("Fill all the necessary spaces");
+            assertTrue(true);
         }
 
     }
