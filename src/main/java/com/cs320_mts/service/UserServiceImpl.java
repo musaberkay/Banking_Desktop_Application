@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService
         if(!String.valueOf(user.getPassword()).matches("[0-9]+"))
             throw new Exception("Password must be only digits");
 
-
         if (user.getName().length() > 100 || user.getName().length() < 2)
             throw new Exception("Name must be between 2 and 100 characters");
 
@@ -72,6 +71,7 @@ public class UserServiceImpl implements UserService
             if (!(user.getIdentificationNumber().charAt(i) >= '0' && user.getIdentificationNumber().charAt(i) <= '9'))
                 throw new Exception("Identification number only includes digits");
         }
+
         if(!user.getEmail().contains("@"))
             throw new Exception("Email needs '@' character");
 
@@ -83,7 +83,6 @@ public class UserServiceImpl implements UserService
                 throw new Exception("Phone number only includes digits");
         }
 
-        // DATABASE ACTION HERE
         if(userRepository.getIdentificationNumberList().contains(user.getIdentificationNumber())) {
             throw new Exception("This user has already registered.");
         } else if(userRepository.getPhoneNumberList().contains(user.getPhoneNumber())) {
@@ -123,8 +122,22 @@ public class UserServiceImpl implements UserService
     
     @Override
 	@Transactional
-	public void changePassword(int userId, int oldPassword, int newPassword) {
-		userRepository.changePassword(userId, oldPassword, newPassword);
+	public void changePassword(int userId, int oldPassword, int newPassword) throws Exception {
+        if(Integer.toString(oldPassword).length() != 6)
+            throw new Exception("Old Password must be 6 digit number");
+        if(Integer.toString(newPassword).length() != 6)
+            throw new Exception("New Password must be 6 digit number");
+        if(userRepository.getById(userId).getPassword()==oldPassword){
+            if(userRepository.getById(userId).getPassword()!=newPassword && newPassword!=oldPassword){
+                userRepository.changePassword(userId, oldPassword, newPassword);
+            }
+            else{
+                throw new Exception("New password cannot be the same as old password");
+            }
+        }
+        else{
+            throw new Exception("The old password is written incorrectly.");
+        }
 	}
 
     @Override

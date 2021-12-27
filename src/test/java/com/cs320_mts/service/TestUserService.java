@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
+
 @SpringBootTest
 public class TestUserService
 {
@@ -15,7 +16,6 @@ public class TestUserService
     UserService userService;
     @Autowired
     AccountService accountService;
-
     /**
      * The default DB mode is "create"
      * This test creates 2 user and 2 account for each user.

@@ -16,7 +16,6 @@ public class Cs320MtsApplication implements CommandLineRunner {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(Cs320MtsApplication.class).headless(false).run(args);
-
     }
 
     @Override

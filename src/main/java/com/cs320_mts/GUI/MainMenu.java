@@ -64,7 +64,7 @@ public class MainMenu extends JPanel {
         createAccount.addActionListener(e -> {
         	//DATABASE ACTIONS HERE
         	try {
-                if(userService.getById(userId).getAccounts().size()==3) {
+                if(userService.getById(userId).getAccounts().size()>=3) {
                 	throw new Exception("You have 3 accounts, plase contact with Customer Services to create a new account.");
                 }
                 else {
