@@ -1,6 +1,7 @@
 package com.cs320_mts.GUI;
 
 import com.cs320_mts.model.Account;
+import com.cs320_mts.service.AccountService;
 import com.cs320_mts.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +12,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class CheckBalance extends JPanel {
 	
 	@Autowired
     UserService userService;
+	
+	@Autowired
+	AccountService accountService;
 	
     private int userId;
     private JButton back;
@@ -36,15 +38,7 @@ public class CheckBalance extends JPanel {
         table                   = new JTable(model);
         model.addRow(new String[]{"Account Id","Balance"});
 
-        List<Account> filteredAccounts = new ArrayList<>();
-
-        for(Account account : userService.getById(userId).getAccounts())
-        {
-            if(!isContain(filteredAccounts,account.getAccountId()))
-                filteredAccounts.add(account);
-        }
-
-        for(Account account : filteredAccounts) {
+        for(Account account : accountService.getAccountsByUserId(userId)) {
         	String accountId = String.valueOf(account.getAccountId());
         	String balance = String.valueOf(account.getBalance());
         	model.addRow(new String[] {accountId, balance});
@@ -86,13 +80,4 @@ public class CheckBalance extends JPanel {
         this.userId = userId;
     }
 
-    private boolean isContain(List<Account> accountList,int id)
-    {
-        for (Account account : accountList)
-        {
-            if(account.getAccountId() == id)
-                return true;
-        }
-        return false;
-    }
 }

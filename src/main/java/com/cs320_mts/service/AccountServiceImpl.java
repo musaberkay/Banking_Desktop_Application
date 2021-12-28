@@ -78,4 +78,9 @@ public class AccountServiceImpl implements AccountService
         }
         return false;
     }
+
+	@Override
+	public List<Account> getAccountsByUserId(int userId) {
+		return accountRepository.getAccountsByUserId(userId);
+	}
 }

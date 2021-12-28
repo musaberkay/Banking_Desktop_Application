@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 
-//@Component
+@Component
 public class Application extends JFrame {
     @Autowired
     private TransferOthersAccount   transferOthers;

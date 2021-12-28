@@ -69,19 +69,8 @@ public class ViewTransactionHist extends JPanel {
         // ************ MODEL ACTION NECESSARY ************
         int counter = 0;
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-
-        List<Account> filteredAccounts = new ArrayList<>();
-
-        for(Account account : userService.getById(userId).getAccounts())
-        {
-            if(!isContain(filteredAccounts,account.getAccountId()))
-                filteredAccounts.add(account);
-        }
-
-
-
-
-        for(Account account: filteredAccounts){
+        
+        for(Account account: accountService.getAccountsByUserId(userId)){
             int size = account.getTransactions().size();
             List<Transaction> transactions = account.getTransactions();
             if(counter == 0){
