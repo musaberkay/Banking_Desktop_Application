@@ -53,12 +53,12 @@ public class TestMoneyTransferInside {
                 account2.getAccountId());
         try{
             accountService.moneyTransfer(account1.getAccountId(),transaction);
-            System.out.println("Money transfer between user’s accounts ARE PERFORMED WHICH WE DONT WANT");
-            assertTrue(false);
+
+            assertTrue(true);
         }
         catch(Exception es){
             System.out.println("Money transfer between user’s accounts is not performed.");
-            assertTrue(true);
+            assertTrue(false);
         }
     }
 }

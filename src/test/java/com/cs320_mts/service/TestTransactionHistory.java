@@ -8,10 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
