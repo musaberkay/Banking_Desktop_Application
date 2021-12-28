@@ -57,7 +57,7 @@ public class TestCreateAccount {
         accountService.save(account);
 
         try{
-            if(userService.getByIdentificationNumber(ID_NUMBER).getAccounts().size()<3){
+            if(userService.getByIdentificationNumber(ID_NUMBER).getAccounts().size() == 3){
 
                 userService.getByIdentificationNumber(ID_NUMBER).getAccounts().add(account);
                 accountService.save(account);

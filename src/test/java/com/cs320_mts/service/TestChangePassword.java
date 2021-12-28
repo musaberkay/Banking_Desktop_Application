@@ -50,15 +50,13 @@ public class TestChangePassword {
             int userId = userService.getByIdentificationNumber(ID_NUMBER).getUserId();
             userService.changePassword(userId, WRONG_PASSWORD, NEW_PASSWORD);
             if(userService.getPassword(userId)==NEW_PASSWORD){
-                assertTrue(true);
-                System.out.println("Password is successfully changed");
-            }
-            else{
                 assertTrue(false);
+                System.out.println("Password is successfully changed,WHICH WE DONT WANT");
             }
         }
         catch(Exception e){
-            assertTrue(false);
+            System.out.println("Password did not changed because of the wrong old password");
+            assertTrue(true);
         }
     }
 
@@ -71,15 +69,13 @@ public class TestChangePassword {
             int userId = userService.getByIdentificationNumber(ID_NUMBER).getUserId();
             userService.changePassword(userId, OLD_PASSWORD, OLD_PASSWORD);
             if(userService.getPassword(userId)==NEW_PASSWORD){
-                assertTrue(true);
-                System.out.println("Password is successfully changed");
-            }
-            else{
                 assertTrue(false);
+                System.out.println("Password is successfully changed, WHICH WE DONT WANT");
             }
         }
         catch(Exception e){
-            assertTrue(false);
+            System.out.println("Password is not changed, because of the same old and new passwords");
+            assertTrue(true);
         }
     }
 }

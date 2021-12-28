@@ -4,8 +4,8 @@ import com.cs320_mts.model.User;
 import com.cs320_mts.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -120,8 +120,7 @@ public class UserServiceImpl implements UserService
         return userRepository.getByIdentificationNumber(id_num);
     }
     
-    @Override
-	@Transactional
+    @Override @Transactional
 	public void changePassword(int userId, int oldPassword, int newPassword) throws Exception {
         if(Integer.toString(oldPassword).length() != 6)
             throw new Exception("Old Password must be 6 digit number");

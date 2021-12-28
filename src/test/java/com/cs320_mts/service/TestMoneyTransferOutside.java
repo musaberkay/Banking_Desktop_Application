@@ -53,11 +53,11 @@ public class TestMoneyTransferOutside {
                 notExistId);
         try{
             accountService.moneyTransfer(account1.getAccountId(),transaction);
-            assertTrue(true);
+            assertTrue(false);
         }
         catch(Exception es){
             System.out.println("Money transfer is not performed because of not existing id.");
-            assertTrue(false);
+            assertTrue(true);
         }
     }
 
@@ -72,11 +72,12 @@ public class TestMoneyTransferOutside {
                 account2.getAccountId());
         try{
             accountService.moneyTransfer(account1.getAccountId(),transaction);
-            assertTrue(true);
+            System.out.println("Money transfer between user’s accounts ARE PERFORMED WHICH WE DONT WANT");
+            assertTrue(false);
         }
         catch(Exception es){
             System.out.println("Money transfer is not performed because of insufficient balance.");
-            assertTrue(false);
+            assertTrue(true);
         }
 
 

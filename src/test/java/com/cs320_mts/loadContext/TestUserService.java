@@ -1,8 +1,10 @@
-package com.cs320_mts.service;
+package com.cs320_mts.loadContext;
 
 import com.cs320_mts.model.Account;
 import com.cs320_mts.model.Transaction;
 import com.cs320_mts.model.User;
+import com.cs320_mts.service.AccountService;
+import com.cs320_mts.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -64,28 +66,6 @@ public class TestUserService
         userService.deleteAll();
     }
 
-    /**
-     * DB mode is "update"
-     * This test creates a transaction object. And tries to do money transfer.
-     * This method should be run as a second test. Because we need initial rows on DB.
-     */
-    @Test
-    public void testCreateTransaction() throws Exception {
-        // creates transaction object.
-        Transaction transaction = new Transaction(30,102);
 
-        // retrieves the sender account. In this test, it is X.
-        Account senderAccount = accountService.getById(105);
-
-        if(accountService.moneyTransfer(senderAccount.getAccountId(),transaction))
-        {
-            System.out.println("Money Transfer has been made successfully");
-
-        }else{
-            throw new Exception("Money Transfer is failed.");
-        }
-
-
-    }
 
 }
